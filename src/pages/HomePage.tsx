@@ -1,9 +1,9 @@
-import React from 'react'
+import Counter from "../components/Counter"
 
 const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
+    return (
+        <Counter />
+    )
 }
 
 export default HomePage
