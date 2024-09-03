@@ -6,6 +6,6 @@
 
 @layer base {
     body {
-        @apply bg-primary-black text-primary-white
+        @apply bg-primary-black text-primary-white h-[300vh] font-primary
     }
 }
