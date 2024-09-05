@@ -1,7 +1,9 @@
-export const formatNumber = (views: number | undefined) => {
-    if (views) {
+export const formatNumber = (value: number | undefined) => {
+    if (value) {
         return new Intl.NumberFormat(undefined, {
-            notation: "compact"
-        }).format(views);
+            notation: "compact",
+            maximumFractionDigits: 2,
+        }).format(value);
     }
+    return undefined;
 }

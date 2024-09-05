@@ -1,4 +1,4 @@
-export interface Coins {
+export interface CoinType {
     uuid: string,
     symbol: string,
     name: string,
@@ -15,7 +15,7 @@ export interface Coins {
     '24hVolume': string
 }
 
-export const initCoin = (): Coins[] => {
+export const initCoin = (): CoinType[] => {
     return [
         {
             uuid: '',

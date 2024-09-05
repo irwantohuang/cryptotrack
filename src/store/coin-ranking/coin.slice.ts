@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PayloadAction } from '@reduxjs/toolkit';
-import { initCoin } from './../../types/Coins';
-import { Coins } from "../../types/Coins";
+import { CoinType, initCoin } from './../../types/Coins';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCoins } from '../../services/coin-ranking/coins.services';
 
 interface CoinState {
     loading: boolean,
     error: string | null,
-    topCoins: Coins[]
+    topCoins: CoinType[]
 }
 
 const initialState: CoinState = {
@@ -29,7 +28,7 @@ const coinSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchCoins.pending, handlerPending)
-            .addCase(fetchCoins.fulfilled, (state, action: PayloadAction<Coins[]>) => {
+            .addCase(fetchCoins.fulfilled, (state, action: PayloadAction<CoinType[]>) => {
                 state.loading = false;
                 state.topCoins = action.payload;
             })
