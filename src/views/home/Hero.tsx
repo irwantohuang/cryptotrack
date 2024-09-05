@@ -19,8 +19,8 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    <div className="mx-auto">
-                        <img src={HeroChain} alt="BlockChain" className="max-w-sm lg:max-w-lg opacity-50" />
+                    <div className="mx-auto hidden md:block">
+                        <img src={HeroChain} alt="BlockChain" className="md:max-w-[200px] max-w-sm lg:max-w-lg opacity-50" />
                     </div>
                 </div>
             </div>

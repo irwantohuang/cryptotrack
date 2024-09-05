@@ -7,10 +7,24 @@
 
 @layer base {
     body {
-        @apply bg-primary-black text-primary-white h-[300vh] font-primary
+        @apply bg-primary-black text-primary-white pb-60 font-primary
     }
 }
 
 .gradient-radial {
     background: radial-gradient(circle at center, #ff7e5f, #feb47b);
-  }
+}
+
+
+.scrollbar::-webkit-scrollbar {
+    @apply h-2 rounded-full
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-transparent rounded-full;
+}
+
+.scrollbar:hover::-webkit-scrollbar-thumb {
+    @apply bg-primary-black-300;
+}
+
