@@ -5,12 +5,14 @@ import { useEffect } from "react";
 import Button from "../../components/elements/Button";
 import { fetchCoins } from "../../services/coin-ranking";
 import { Link } from "react-router-dom";
+import { TOP_COIN } from "../../constants/constant";
 
 const TopCoins = () => {
     // const { loading, error, topCoins } = useSelector((state: RootState) => state.coin);
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
+        // dispatch(fetchCoins({ type: TOP_COIN, request: { limit: 10, timePeriod: '7d' }}))
         // dispatch(fetchCoins({ limit: 10, timePeriod: '7d' }))
     }, [dispatch])
     const headers = ["#", "name", "price", "market cap", "24h %", 'Last 7 Days']
@@ -498,7 +500,9 @@ const TopCoins = () => {
                                     <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>$ { Number(Number(row.marketCap).toFixed(2)).toLocaleString() }</td>
                                     <td className={`px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center ${Number(row.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>{ row.change } %</td>
                                     <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>
-                                        <Sparkline data={row.sparkline.map(value => parseFloat(value))} />
+                                        <div className="flex items-center justify-center max-h-[30px] max-w-[100px] mx-auto">
+                                            <Sparkline data={row.sparkline.map(value => parseFloat(value))} />
+                                        </div>
                                     </td>
                                 </tr>
                             ))}

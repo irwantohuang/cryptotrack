@@ -1,4 +1,4 @@
-import { CoinType } from "./Coins"
+import { CoinOverviewType, initCoinOverview } from "./CoinOverview"
 
 export interface StatisticType {
     totalCoins: number,
@@ -7,8 +7,8 @@ export interface StatisticType {
     totalMarketCap: string,
     total24hVolume: string,
     btcDominance: number,
-    bestCoins: CoinType | null,
-    newestCoins: CoinType | null,
+    bestCoins: CoinOverviewType[],
+    newestCoins: CoinOverviewType[],
 }
 
 export const initStatistic = (): StatisticType => {
@@ -19,7 +19,7 @@ export const initStatistic = (): StatisticType => {
         totalMarketCap: "",
         total24hVolume: "",
         btcDominance: 0,
-        bestCoins: null,
-        newestCoins: null
+        bestCoins: initCoinOverview(),
+        newestCoins: initCoinOverview()
     }
 }

@@ -6,13 +6,14 @@ import TopCoins from "../views/home/TopCoins"
 import { AppDispatch, RootState } from "../store/store"
 import { useEffect } from "react"
 import { fetchStatistic } from "../services/coin-ranking/statistic.services"
+import BestCoins from "../views/home/BestCoins"
+import { StatisticType } from "../types/Statistic"
 
 const HomePage = () => {
     // const { loading, error, statistic } = useSelector((state: RootState) => state.statistic);
     // const dispatch = useDispatch<AppDispatch>();
 
-    const statistic = {
-        "referenceCurrencyRate": 1,
+    const statistic: StatisticType = {
         "totalCoins": 41722,
         "totalMarkets": 40239,
         "totalExchanges": 186,
@@ -77,6 +78,7 @@ const HomePage = () => {
             <Overview />
             <TopCoins />
             <Statistic {...statistic} />
+            <BestCoins bestCoinOverview={statistic.bestCoins} />
         </div>
     )
 }

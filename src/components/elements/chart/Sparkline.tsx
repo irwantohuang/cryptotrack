@@ -19,11 +19,11 @@ interface SparklineProps {
 
 const createGradient = (ctx: CanvasRenderingContext2D, data: number[]) => {
     const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-    if (data[0] > data[data.length]) {
-        gradient.addColorStop(0.1, 'rgba(34, 197, 94, 0.35)'); // green
-    } else {
-        gradient.addColorStop(0.1, 'rgba(239, 68, 68, 0.35)'); // red
-    }
+    console.log("ga masuk ye ? ")
+    const isIncreasing = data[0] < data[data.length - 1];
+
+    gradient.addColorStop(0, isIncreasing ? 'rgba(34, 197, 94, 0.35)' : 'rgba(239, 68, 68, 0.35)');
+    gradient.addColorStop(1, 'rgba(34, 197, 94, 0.0)');
     return gradient;
 }
 
@@ -53,7 +53,7 @@ const Sparkline = ({ data }: SparklineProps) => {
                     {
                         label: 'Crypto Latest 7 Days',
                         data: data,
-                        borderColor: (data[0] > data[data.length]) ? '#22c55e' : '#ef4444',
+                        borderColor: (data[0] < data[data.length - 1]) ? '#22c55e' : '#ef4444',
                         backgroundColor: createGradient(chart.ctx, data),
                         fill: true
                     }
@@ -63,10 +63,6 @@ const Sparkline = ({ data }: SparklineProps) => {
 
         updateChart();
         chart.update();
-
-        // chart.data.datasets[0].data = data;
-        // chart.data.datasets[0].backgroundColor = createGradient(chart.ctx);
-        // chart.update();
     }, [data]);
 
     const options = {
@@ -99,9 +95,7 @@ const Sparkline = ({ data }: SparklineProps) => {
     };
 
     return (
-        <div className='max-w-[100px] max-h-[30px] flex items-center justify-center mx-auto'>
-            <Chart ref={chartRef} type="line" data={chartData} options={options} />
-        </div>
+        <Chart ref={chartRef} type="line" data={chartData} options={options} />
     );
 }
 

@@ -9,10 +9,13 @@ export interface CoinType {
     btcPrice: string,
     listedAt: number,
     change: string,
-    rank: string,
+    lowVolume: boolean,
+    tier: number,
+    rank: string | number,
     sparkline: string[],
-    coinRankingUrl: string,
-    '24hVolume': string
+    coinrankingUrl: string,
+    '24hVolume': string,
+    contractAddresses?: string[]
 }
 
 export const initCoin = (): CoinType[] => {
@@ -28,9 +31,11 @@ export const initCoin = (): CoinType[] => {
             btcPrice: '',
             listedAt: 0,
             change: '',
+            lowVolume: false,
+            tier: 0,
             rank: '',
             sparkline: [],
-            coinRankingUrl: '',
+            coinrankingUrl: '',
             '24hVolume': ''
         }
     ]
