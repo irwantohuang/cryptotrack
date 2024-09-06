@@ -465,6 +465,17 @@ const TopCoins = () => {
         }
     ]
     
+    const getAlign = (header: string) => {
+        console.log("Header ", header)
+        switch(header) {
+            case 'name': return 'text-left';
+            case 'price':
+            case 'market cap':
+            case '24 % ': 
+                return 'text-right';
+            default: return 'text-center'
+        }
+    }
 
     return (
         <section className='h-full w-full py-20'>
@@ -477,10 +488,13 @@ const TopCoins = () => {
 
                 <div className='overflow-x-auto scrollbar w-full lg:px-24 px-0 mt-8 my-4'>
                     <table className='min-w-full'>
-                        <thead className='bg-primary/50 rounded-2xl'>
+                        <thead className='bg-primary rounded-2xl'>
                             <tr className="rounded-xl">
                                 {headers.map((header, index) => (
-                                    <th key={index} className='text-center whitespace-nowrap px-2 lg:px-4 py-2 font-semibold border-b border-b-primary-white-200 capitalize'>
+                                    <th key={index} className={`whitespace-nowrap px-6 py-2 font-semibold border-b border-b-primary-white-200 capitalize
+                                        ${header === 'name' && 'sticky left-0 bg-primary'}
+                                        ${getAlign(header)}
+                                    `}>
                                         {header}
                                     </th>
                                 ))}
@@ -488,18 +502,20 @@ const TopCoins = () => {
                         </thead>
                         <tbody>
                             {topCoins.map((row, index) => (
-                                <tr key={index} className={`group ${index % 2 === 0 ? '' : ''} hover:bg-primary-black-200`}> 
-                                    <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>{row.rank}</td>
-                                    <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 hover:text-primary-200'>
-                                        <div className="flex items-center justify-center gap-2">
+                                <tr key={index} className={`group ${index % 2 === 0 ? '' : ''} hover:bg-primary-black-200 group`}> 
+                                    <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>{row.rank}</td>
+                                    <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 sticky left-0 bg-primary-black group-hover:bg-primary-black-200'>
+                                        <div className="flex items-center justify-start gap-2">
                                             <img src={row.iconUrl} alt="" className="w-6 h-6" />
-                                            <span>{row.name} ({row.symbol})</span>
+                                            <span className="me-4 text-primary-white group-hover:text-accent font-medium font-secondary">{row.name} 
+                                                <span className="text-primary-white-200 group-hover:text-primary-white"> ({row.symbol})</span>
+                                            </span>
                                         </div>
                                     </td>
-                                    <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>$ { Number(Number(row.price).toFixed(2)).toLocaleString() }</td>
-                                    <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>$ { Number(Number(row.marketCap).toFixed(2)).toLocaleString() }</td>
-                                    <td className={`px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center ${Number(row.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>{ row.change } %</td>
-                                    <td className='px-4 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>
+                                    <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-right'>$ { Number(Number(row.price).toFixed(2)).toLocaleString() }</td>
+                                    <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-right'>$ { Number(Number(row.marketCap).toFixed(2)).toLocaleString() }</td>
+                                    <td className={`px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-right ${Number(row.change) < 0 ? 'text-red-500' : 'text-green-500'}`}>{ row.change } %</td>
+                                    <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2'>
                                         <div className="flex items-center justify-center max-h-[30px] max-w-[100px] mx-auto">
                                             <Sparkline data={row.sparkline.map(value => parseFloat(value))} />
                                         </div>
