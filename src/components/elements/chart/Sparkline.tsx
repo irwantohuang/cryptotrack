@@ -48,11 +48,12 @@ const Sparkline = ({ data }: SparklineProps) => {
 
         const updateChart = () => {
             setChartData({
-                labels: Array(data.length).fill(''),
+                labels: Array(data.filter(e => !isNaN(e)).length).fill(''),
+
                 datasets: [
                     {
                         label: 'Crypto Latest 7 Days',
-                        data: data,
+                        data: data.filter(e => !isNaN(e)),
                         borderColor: (data[0] < data[data.length - 1]) ? '#22c55e' : '#ef4444',
                         backgroundColor: createGradient(chart.ctx, data),
                         fill: true
@@ -60,7 +61,7 @@ const Sparkline = ({ data }: SparklineProps) => {
                 ]
             })
         }
-
+        
         updateChart();
         chart.update();
     }, [data]);

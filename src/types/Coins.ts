@@ -4,17 +4,17 @@ export interface CoinType {
     name: string,
     color: string,
     iconUrl: string,
-    marketCap: string,
-    price: string,
-    btcPrice: string,
+    marketCap: string | null,
+    price: string | null,
+    btcPrice: string | null, 
     listedAt: number,
-    change: string,
+    change: string | null,
     lowVolume: boolean,
     tier: number,
     rank: string | number,
-    sparkline: string[],
+    sparkline: (string | null)[],
     coinrankingUrl: string,
-    '24hVolume': string,
+    '24hVolume': string | null,
     contractAddresses?: string[]
 }
 

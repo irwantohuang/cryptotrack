@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import { fetchStatistic } from "../services/coin-ranking/statistic.services"
 import BestCoins from "../views/home/BestCoins"
 import { StatisticType } from "../types/Statistic"
+import NewestCoin from "../views/home/NewestCoin"
 
 const HomePage = () => {
     // const { loading, error, statistic } = useSelector((state: RootState) => state.statistic);
@@ -79,6 +80,7 @@ const HomePage = () => {
             <TopCoins />
             <Statistic {...statistic} />
             <BestCoins bestCoinOverview={statistic.bestCoins} />
+            <NewestCoin />
         </div>
     )
 }

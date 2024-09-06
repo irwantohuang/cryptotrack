@@ -157,7 +157,7 @@ const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
     ]
 
     return (
-        <section className='w-full h-full py-12'>
+        <section className='w-full h-full py-20'>
             <div className='container mx-auto p-4'>
                 <div className="text-center max-w-screen-md mx-auto">
                     <p className="text-2xl lg:text-4xl text-primary-white">
