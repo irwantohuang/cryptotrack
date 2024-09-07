@@ -3,7 +3,7 @@ import Sparkline from "../../components/elements/chart/Sparkline"
 import { AppDispatch, RootState } from "../../store/store";
 import { useEffect } from "react";
 import Button from "../../components/elements/Button";
-import { fetchCoins } from "../../services/coin-ranking";
+import { fetchCoins } from "../../services/coin-ranking/index.services";
 import { Link } from "react-router-dom";
 import { TOP_COIN } from "../../constants/constant";
 

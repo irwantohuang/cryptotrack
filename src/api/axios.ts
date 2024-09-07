@@ -15,10 +15,24 @@ coinRankingApi.interceptors.response.use(
         if (error) {
             throw error?.response?.data?.message
         }
-        // if (error) {
-            // switch (error?.response?.status) {
-                // 
-            // }
-        // }
+    }
+)
+
+
+export const newsApi = axios.create({
+    baseURL: import.meta.env.VITE_NEWS_BASE_URL,
+    headers: {
+        'Authorization': import.meta.env.VITE_NEWS_API_KEY,
+        'X-Api-Key': import.meta.env.VITE_NEWS_API_KEY,
+    }
+})
+
+newsApi.interceptors.response.use(
+    response => response,
+    error => {
+        console.log('Axios interceptors error ...' , error)
+        if (error) {
+            throw error?.response?.data?.message
+        }
     }
 )

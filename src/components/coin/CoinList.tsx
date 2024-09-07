@@ -4,7 +4,7 @@ import Sparkline from '../elements/chart/Sparkline'
 
 const CoinList = ({ iconUrl, name, symbol, price, change, sparkline }: CoinType) => {
     return (
-        <div className='w-full bg-gradient-to-br from-primary via-cyan-500 to-accent max-w-xl p-0.5 rounded shadow transition-all duration-150 hover:-translate-y-2'>
+        <div className='w-full bg-gradient-to-br from-primary via-cyan-500 to-accent max-w-xl p-[1.5px] rounded shadow transition-all duration-150 hover:-translate-y-2'>
             <div className='flex items-center justify-between p-4 bg-primary-black-200 rounded h-full flex-shrink'>
                 <div className='flex gap-4'>
                     <div className="w-16 h-16 bg-red-200 overflow-hidden rounded-full">
