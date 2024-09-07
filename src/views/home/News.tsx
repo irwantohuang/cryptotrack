@@ -6,6 +6,8 @@ import { fetchNewsEverything } from "../../services/news-api/index.services";
 import { NEWS_DOMAINS } from "../../constants/constant";
 import { NewsResponseType } from "../../types/NewsResponse";
 import NewsCard from "../../components/news/NewsCard";
+import Button from "../../components/elements/Button";
+import { Link } from "react-router-dom";
 
 const News = () => {
     const { loading, error, newsData } = useSelector((state: RootState) => state.news);
@@ -85,10 +87,24 @@ const News = () => {
                     </p>
                 </div>
 
+
                 <div className="grid justify-center mx-auto grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-x-2 gap-y-8 mt-12">
                     {news.articles.map((article, index) => (
                         <NewsCard article={article} index={index} key={index} />
                     ))}
+                </div>
+
+                <div className="flex items-center justify-center mt-8">
+                    <Button 
+                        data-aos="fade"
+                        data-aos-duration="500"
+                        size={"pill"} 
+                        className="px-24
+                        ">
+                        <Link to="/news">
+                            View all
+                        </Link>
+                    </Button>
                 </div>
             </div>
         </div>

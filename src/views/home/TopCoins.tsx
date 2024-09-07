@@ -541,15 +541,15 @@ const TopCoins = () => {
                     </table>
                 </div>
 
-
                 <div className="flex items-center justify-center mt-8">
                     <Button 
                         data-aos="fade"
                         data-aos-duration="500"
                         size={"pill"} 
-                        className="px-12">
+                        className="px-24
+                        ">
                         <Link to="/cryptocurrencies">
-                            Show more
+                            View all
                         </Link>
                     </Button>
                 </div>
