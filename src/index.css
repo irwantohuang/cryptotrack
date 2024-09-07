@@ -13,7 +13,7 @@
 
 @layer base {
     body {
-        @apply bg-primary-black text-primary-white pb-60 font-primary
+        @apply bg-primary-black text-primary-white font-primary
     }
 }
 

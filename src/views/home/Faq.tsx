@@ -20,7 +20,7 @@ const Faq = () => {
                     <div className='flex flex-col max-w-screen-md mx-auto mt-8 cursor-pointer'>
 
                         {faqs.map((faq) => (
-                            <div onClick={() => toggleAnswer(faq.id)} className='border-b py-6 px-2 group'>
+                            <div key={faq.id} onClick={() => toggleAnswer(faq.id)} className='border-b py-6 px-2 group'>
                                 <div className='flex items-center justify-between'>
                                     <p className='text-xl font-medium transition-colors duration-300 group-hover:text-accent'>
                                         <span className='text-2xl font-bold mr-2'>Q{faq.id}.</span>
