@@ -10,6 +10,7 @@ import BestCoins from "../views/home/BestCoins"
 import { StatisticType } from "../types/Statistic"
 import NewestCoin from "../views/home/NewestCoin"
 import News from "../views/home/News"
+import SecurityTips from "../views/home/SecurityTips"
 
 const HomePage = () => {
     // const { loading, error, statistic } = useSelector((state: RootState) => state.statistic);
@@ -83,6 +84,7 @@ const HomePage = () => {
             <BestCoins bestCoinOverview={statistic.bestCoins} />
             <NewestCoin />
             <News />
+            <SecurityTips />
         </div>
     )
 }
