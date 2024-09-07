@@ -1,10 +1,13 @@
 import { CoinType } from "../../types/Coins"
 import { formatNumber } from "../../utils/utility"
 import Sparkline from "../elements/chart/Sparkline"
+import '../../index.css'
 
-const CoinCard = ({iconUrl, name, symbol, price, change, sparkline} : CoinType) => {
+const CoinCard = ({ iconUrl, name, symbol, price, change, sparkline }: CoinType) => {
     return (
-        <div className="w-[300px] bg-primary-black-200 py-4 px-4 rounded-md hover:scale-105 transition-all duration-150">
+        <div className='relative w-[300px] py-4 px-4 rounded-md hover:scale-105 transition-all duration-150
+             [background:linear-gradient(45deg,#241b35,#342a45_50%,#241b35)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.600/.48)_80%,_#6c35de_86%,_#ffc7ff_90%,_#6c35de_94%,_theme(colors.slate.600/.48))_border-box] border border-transparent animate-border
+        '>
             <div className="flex items-center gap-4">
                 <div className="w-16 h-16 bg-red-200 overflow-hidden rounded-full">
                     <img src={iconUrl} alt="" className="object-cover w-full" />

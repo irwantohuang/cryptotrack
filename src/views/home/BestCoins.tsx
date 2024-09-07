@@ -171,7 +171,7 @@ const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
 
             <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto mt-8 gap-x-6 gap-y-4">
                 {bestCoins.map((coin) => (
-                    <CoinCard key={coin.uuid} {...coin} />
+                    <CoinCard key={coin.uuid} {...coin}  />
                 ))}
             </div>
         </section>

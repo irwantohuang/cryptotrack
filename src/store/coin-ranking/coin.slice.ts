@@ -33,8 +33,6 @@ const coinSlice = createSlice({
             .addCase(fetchCoins.pending, handlerPending)
             .addCase(fetchCoins.fulfilled, (state, action: PayloadAction<{ type: string, data: CoinType[]}>) => {
                 state.loading = false;
-                console.log("Type: ", action.payload.type)
-                console.log("Data ", action.payload.data)
                 switch (action.payload.type) {
                     case TOP_COIN: 
                         state.topCoins = action.payload.data; break;
