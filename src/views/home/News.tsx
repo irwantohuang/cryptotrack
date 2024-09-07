@@ -77,7 +77,7 @@ const News = () => {
 
             <div className="container mx-auto p-4">
                 <div className="max-w-screen-md mx-auto text-center">
-                    <p className="text-2xl lg:text-4xl text-primary-white">
+                    <p data-aos="fade-up" className="text-2xl lg:text-4xl text-primary-white">
                         Catch up on the
                         <span className="text-4xl md:text-5xl font-medium font-secondary capitalize bg-clip-text bg-gradient-to-br text-transparent from-primary-300  via-accent to-primary-white">
                             <br className="md:hidden" /> latest headlines </span>
@@ -87,7 +87,7 @@ const News = () => {
 
                 <div className="grid justify-center mx-auto grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-x-2 gap-y-8 mt-12">
                     {news.articles.map((article, index) => (
-                        <NewsCard {...article} key={index} />
+                        <NewsCard article={article} index={index} key={index} />
                     ))}
                 </div>
             </div>

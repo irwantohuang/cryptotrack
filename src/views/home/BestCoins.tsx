@@ -160,7 +160,7 @@ const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
         <section className='w-full h-full py-20'>
             <div className='container mx-auto p-4'>
                 <div className="text-center max-w-screen-md mx-auto">
-                    <p className="text-2xl lg:text-4xl text-primary-white">
+                    <p data-aos="fade-down" className="text-2xl lg:text-4xl text-primary-white">
                         Explore some of the
                         <span className="text-4xl md:text-5xl font-medium font-secondary capitalize bg-clip-text bg-gradient-to-br text-transparent from-primary-200  via-primary-300 to-primary-white-200 from-5% via-70%">
                             <br className="md:hidden" /> best performing </span>
@@ -169,8 +169,8 @@ const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
                 </div>
                 
                 <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto mt-8 gap-x-6 gap-y-4">
-                    {bestCoins.map((coin) => (
-                        <CoinCard key={coin.uuid} {...coin} />
+                    {bestCoins.map((coin, index) => (
+                        <CoinCard key={coin.uuid} coin={coin} index={index} />
                     ))}
                 </div>
             </div>

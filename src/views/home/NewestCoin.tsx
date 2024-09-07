@@ -117,7 +117,7 @@ const NewestCoin = () => {
         <section className='w-full h-full py-20 bg-slate-900'>
             <div className='container mx-auto p-4'>
                 <div className='text-center max-w-screen-md mx-auto'>
-                    <p className='text-2xl lg:text-4xl text-primary-white'>
+                    <p data-aos="fade-down" className='text-2xl lg:text-4xl text-primary-white'>
                         Check out the
                         <span className="text-4xl md:text-5xl font-medium font-secondary capitalize bg-clip-text bg-gradient-to-bl text-transparent from-primary  via-primary-300 to-primary-white/75 from-5% via-70%">
                             <br className="md:hidden" /> recently launched </span>
@@ -126,8 +126,8 @@ const NewestCoin = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center mt-8 gap-6">
-                    {topCoins.map((coin) => (
-                        <CoinList key={coin.uuid} {...coin} />
+                    {topCoins.map((coin, index) => (
+                        <CoinList key={coin.uuid} coin={coin} index={index} />
                     ))}
                 </div>
             </div>

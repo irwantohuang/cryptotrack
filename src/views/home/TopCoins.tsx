@@ -482,12 +482,25 @@ const TopCoins = () => {
             <div className='container mx-auto h-full px-4 lg:px-0'>
                 
                 <div className='text-center'>
-                    <span className='text-5xl font-secondary font-semibold bg-clip-text bg-gradient-to-r from-primary-white via-accent to-primary-300 text-transparent'>Top 10 Cryptocurrencies</span>
-                    <p className='mt-4 text-2xl max-w-4xl mx-auto text-primary-white-200'>Explore the world's leading cryptocurrencies ranked by market cap. Stay informed with up-to-date information on the most valuable digital assets.</p>
+                    <span 
+                        data-aos="fade-up"
+                        data-aos-duration="800"
+                        className='text-5xl font-secondary font-semibold bg-clip-text bg-gradient-to-r from-primary-white via-accent to-primary-300 text-transparent'>Top 10 Cryptocurrencies
+                    </span>
+                    <p 
+                        data-aos="fade-up" 
+                        data-aos-offset="5"
+                        data-aos-delay="200" 
+                        className='mt-4 text-2xl max-w-4xl mx-auto text-primary-white-200'>
+                            Explore the world's leading cryptocurrencies ranked by market cap. Stay informed with up-to-date information on the most valuable digital assets.
+                    </p>
                 </div>
 
                 <div className='overflow-x-auto scrollbar w-full lg:px-24 px-0 mt-8 my-4'>
-                    <table className='min-w-full'>
+                    <table 
+                        data-aos="fade-left"
+                        data-aos-delay="100"
+                        className='min-w-full'>
                         <thead className='bg-primary rounded-2xl'>
                             <tr className="rounded-xl">
                                 {headers.map((header, index) => (
@@ -502,7 +515,9 @@ const TopCoins = () => {
                         </thead>
                         <tbody>
                             {topCoins.map((row, index) => (
-                                <tr key={index} className={`group ${index % 2 === 0 ? '' : ''} hover:bg-primary-black-200 group`}> 
+                                <tr 
+                                    key={index} 
+                                    className={`group ${index % 2 === 0 ? '' : ''} hover:bg-primary-black-200 group`}> 
                                     <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 text-center'>{row.rank}</td>
                                     <td className='px-6 border-b border-b-primary-white/15 whitespace-nowrap py-2 sticky left-0 bg-primary-black group-hover:bg-primary-black-200'>
                                         <div className="flex items-center justify-start gap-2">
@@ -528,7 +543,11 @@ const TopCoins = () => {
 
 
                 <div className="flex items-center justify-center mt-8">
-                    <Button size={"pill"} className="px-12">
+                    <Button 
+                        data-aos="fade"
+                        data-aos-duration="500"
+                        size={"pill"} 
+                        className="px-12">
                         <Link to="/cryptocurrencies">
                             Show more
                         </Link>

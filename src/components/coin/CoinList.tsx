@@ -2,9 +2,26 @@ import { CoinType } from '../../types/Coins'
 import { formatNumber } from '../../utils/utility'
 import Sparkline from '../elements/chart/Sparkline'
 
-const CoinList = ({ iconUrl, name, symbol, price, change, sparkline }: CoinType) => {
+interface CoinListProps {
+    coin: CoinType,
+    index: number
+}
+
+const CoinList = ({ coin, index }: CoinListProps) => {
+    const { iconUrl, name, symbol, price, change, sparkline } = coin;
+
+    const getAos = (index: number) => {
+        switch (index) {
+            case 0: return 'fade-down-right';
+            case 1: return 'zoom-in';
+            case 2: return 'fade-up-left';
+        }
+    } 
+
     return (
-        <div className='w-full bg-gradient-to-br from-primary via-cyan-500 to-accent max-w-xl p-[1.5px] rounded shadow transition-all duration-150 hover:-translate-y-2'>
+        <div
+            data-aos={getAos(index)} data-aos-delay={index * 100}
+            className='w-full bg-gradient-to-br from-primary via-cyan-500 to-accent max-w-xl p-[1.5px] rounded shadow transition-all duration-150 hover:-translate-y-2'>
             <div className='flex items-center justify-between p-4 bg-primary-black-200 rounded h-full flex-shrink'>
                 <div className='flex gap-4'>
                     <div className="w-16 h-16 bg-red-200 overflow-hidden rounded-full">

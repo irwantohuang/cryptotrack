@@ -1,9 +1,15 @@
 import { NewsArticleType } from '../../types/NewsArticle'
 import { formatPublishedAt } from '../../utils/utility'
 
-const NewsCard = ({ url, urlToImage, title, description, source, publishedAt }: NewsArticleType) => {
+interface NewsCardProps {
+    article: NewsArticleType,
+    index: number
+}
+
+const NewsCard = ({ article, index }: NewsCardProps) => {
+    const { url, urlToImage, title, description, source, publishedAt } = article
     return (
-        <a href={url} target="_blank" className="p-2 cursor-pointer transition-all duration-150 hover:shadow-xl group">
+        <a data-aos="fade-down" data-aos-delay={index * 100} href={url} target="_blank" className="p-2 cursor-pointer transition-all duration-150 hover:shadow-xl group">
             <div className="relative aspect-video rounded overflow-hidden">
                 <img src={urlToImage} alt={title} className="object-cover" />
                 <div className="absolute inset-0 transition-all duration-150  group-hover:bg-gradient-to-r from-primary/50 to-primary-200/50 opacity-25" />
