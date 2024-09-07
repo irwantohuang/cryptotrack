@@ -7,7 +7,7 @@ const buttonVariants  = cva('transition-all duration-150 focus:outline-none', {
         variant: {
             default: "bg-primary hover:bg-primary/80 focus:ring-2 focus:ring-primary-200",
             outline: "border-2 border-primary hover:bg-primary focus:ring-2 focus:ring-primary-200",
-            ghost: "bg-transparent hover:bg-primary-white-300 hover:text-primary-black"
+            ghost: "bg-transparent hover:bg-primary-black-200 hover:text-primary-white"
         },
         size: {
             default: "rounded p-2",
