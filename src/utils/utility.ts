@@ -1,9 +1,16 @@
-export const formatNumber = (value: number | undefined, digit?: number) => {
+export const formatNumber = (value: number | undefined, digit?: number, type?: number) => {
     if (value) {
-        return new Intl.NumberFormat(undefined, {
-            notation: "compact",
-            maximumFractionDigits: (digit) ? digit : 2,
-        }).format(value);
+        if (type === 1) {
+            return new Intl.NumberFormat(undefined, {
+                notation: "compact",
+                maximumFractionDigits: (digit) ? digit : 2,
+            }).format(value);
+        } else if (type === 2) {
+            // return Number(value?.toFixed(2)).toLocaleString();
+            return Number(Number(value).toFixed(2)).toLocaleString();
+
+            
+        }
     }
     return undefined;
 }

@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
     return (
-        <main className="main-layout w-full overflow-x-hidden">
+        <main className="main-layout relative w-full min-h-screen h-full flex flex-col overflow-x-hidden">
             <Header>
                 <Navbar />
             </Header>

@@ -3,7 +3,8 @@ export interface CoinOverviewType {
     symbol: string,
     name: string,
     iconUrl: string,
-    coinrankingUrl: string,
+    coinrankingUrl?: string,
+    price?: string
 }
 
 export const initCoinOverview = (): CoinOverviewType[] => {
@@ -14,6 +15,7 @@ export const initCoinOverview = (): CoinOverviewType[] => {
             name: "",
             iconUrl: "",
             coinrankingUrl: "",
+            price: ""
         }
     ]
 }

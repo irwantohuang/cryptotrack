@@ -2,11 +2,11 @@ import { cva, VariantProps } from "class-variance-authority"
 import { ComponentProps } from "react"
 import { twMerge } from "tailwind-merge"
 
-const buttonVariants  = cva('transition-all duration-150 focus:outline-none', {
+const buttonVariants  = cva('transition-all duration-150', {
     variants: {
         variant: {
-            default: "bg-primary hover:bg-primary/80 focus:ring-2 focus:ring-primary-200",
-            outline: "border-2 border-primary hover:bg-primary focus:ring-2 focus:ring-primary-200",
+            default: "bg-primary hover:bg-primary/80",
+            outline: "border-2 border-primary hover:bg-primary-200",
             ghost: "bg-transparent hover:bg-primary-black-200 hover:text-primary-white"
         },
         size: {

@@ -18,7 +18,7 @@
 }
 
 .scrollbar::-webkit-scrollbar {
-    @apply h-2 rounded-full
+    @apply h-2 w-2 rounded-full bg-transparent
 }
 
 .scrollbar::-webkit-scrollbar-thumb {

@@ -19,7 +19,6 @@ interface SparklineProps {
 
 const createGradient = (ctx: CanvasRenderingContext2D, data: number[]) => {
     const gradient = ctx.createLinearGradient(0, 0, 0, 250);
-    console.log("ga masuk ye ? ")
     const isIncreasing = data[0] < data[data.length - 1];
 
     gradient.addColorStop(0, isIncreasing ? 'rgba(34, 197, 94, 0.35)' : 'rgba(239, 68, 68, 0.35)');
