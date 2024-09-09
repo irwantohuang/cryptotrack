@@ -5,6 +5,14 @@ import './index.css'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store.ts'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+AOS.init({
+    duration: 1200,
+    once: true,
+})
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>

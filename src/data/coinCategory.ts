@@ -1,0 +1,20 @@
+export const coinCategories = [
+    "All",
+    "DeFi",
+    "Stablecoin",
+    "NFT",
+    "Exchange",
+    "Staking",
+    "DAO",
+    "Meme",
+    "Privace",
+    "Metaverse",
+    "Gaming",
+    "Wrapped",
+    "Layer-1",
+    "Layer-2",
+    "Fan-token",
+    "Football-club",
+    "Web3",
+    "Social"
+]

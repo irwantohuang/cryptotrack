@@ -1,10 +1,25 @@
 /** @type {import('tailwindcss').Config} */
+
+import bg1 from './src/assets/images/bg-1.jpg'
+
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
         extend: {
+            animation: {
+                'border': 'border 4s linear infinite',
+            },
+            keyframes: {
+                'border': {
+                    to: { '--border-angle': '360deg' },
+                }
+            },   
+            backgroundImage: {
+                'hero-bg-gradient': `linear-gradient(to right, rgba(108, 53, 222, 0.5), rgba(0, 0, 0, 0.5)), url('./src/assets/images/bg-1.jpg')`,
+            },
             fontFamily: {
-                primary: ["Inter", "sans-serif"]
+                primary: ["Inter", "sans-serif"],
+                secondary: ["Poppins", "sans-serif"]
             },
             colors: {
                 primary: {
