@@ -169,7 +169,9 @@ const CryptoHeader = () => {
                 </div>
 
                 <div className="mt-12">
-                    <SearchInput coins={searchSuggestions} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                    <div className="max-w-screen-md mx-auto">
+                        <SearchInput coins={searchSuggestions} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                    </div>
 
                     <div className="mt-2 md:mt-4">
                         <CoinCategory categories={coinCategories} selected={selectedCategory} onSelect={handleSelectCategory} />

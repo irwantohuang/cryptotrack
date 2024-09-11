@@ -38,12 +38,40 @@ const CoinCategory = ({ categories, selected, onSelect }: CategoryProps) => {
         }
     }
 
+    // const updateButtonVisibility = () => {
+    //     if (sectionRef.current == null) return;
+
+    //     const containerWidth = sectionRef.current.clientWidth;
+    //     const contentWidth = sectionRef.current.scrollWidth;
+
+    //     // Cek apakah konten lebih lebar daripada kontainer
+    //     setShowPreviousButton(translate > 0);
+    //     setShowNextButton(translate + containerWidth < contentWidth);
+    // };
+
+    // useEffect(() => {
+    //     // Jalankan update visibility saat komponen pertama kali dirender
+    //     updateButtonVisibility();
+
+    //     // Observer untuk mendengarkan perubahan ukuran
+    //     const observer = new ResizeObserver(() => updateButtonVisibility());
+    //     if (sectionRef.current) {
+    //         observer.observe(sectionRef.current);
+    //     }
+
+    //     // Bersihkan observer ketika komponen di-unmount
+    //     return () => observer.disconnect();
+    // }, [categories, translate]);
+
     useEffect(() => {
         if (sectionRef.current == null) return;
 
         const observer = new ResizeObserver(entires => {
             const container = entires[0]?.target;
             if (container == null) return;
+
+            console.log("Container Width ", container.clientWidth)
+            console.log("Container Width ", container.scrollWidth)
 
             setShowPreviousButton(translate > 0);
             setShowNextButton(translate + container.clientWidth < container.scrollWidth)
@@ -55,11 +83,11 @@ const CoinCategory = ({ categories, selected, onSelect }: CategoryProps) => {
 
 
     return (
-        <section className="coin-category h-14 flex items-center overflow-hidden z-10">
+        <section className="coin-category h-14 flex items-center overflow-hidden z-10 w-full">
             <div ref={sectionRef} className="overflow-hidden relative">
                 <div className="flex whitespace-nowrap transition-transform w-[max-content] gap-3" style={{ transform: `translateX(-${translate}px)` }}>
-                    {coinCategories.map((category, index) => (
-                        <div key={category}  data-aos="fade-left" data-aos-delay={index * 100}>
+                    {categories.map((category, index) => (
+                        <div key={category} data-aos="fade-left" data-aos-delay={index * 100}>
                             <Button onClick={() => onSelect(category)} className={`px-4 py-2 text-sm md:text-base rounded-md font-semibold ${selected === category ? 'bg-accent' : 'bg-primary'}`} style={{ opacity: 1 }}>
                                 {category}
                             </Button>

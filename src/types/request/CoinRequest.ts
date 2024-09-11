@@ -11,3 +11,12 @@ export interface CoinRequest {
     limit?: number,
     offset?: number
 }
+
+
+export interface SingleCoinRequest {
+    uuid: string,
+    request: {
+        referenceCurrencyUuid?: string,
+        timePeriod: string
+    }
+}

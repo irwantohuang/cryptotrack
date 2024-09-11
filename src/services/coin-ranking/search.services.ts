@@ -11,11 +11,10 @@ export const fetchSearch = createAsyncThunk("crypto/fetchSearch", async(request:
         const response = await coinRankingApi.get("/search-suggestions", {
             params: request
         })
-
         console.log("response here...", response)
         return response.data.data.coins;
     } catch (error) {
         console.log("Error here... ", error)
-        return rejectWithValue(error);
+    return rejectWithValue(error);
     }
 })

@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from './counter/counterSlice'
-import { coinReducer, searchReducer, statisticReducer } from "./coin-ranking";
+import { coinReducer, priceHistoryReducer, searchReducer, statisticReducer } from "./coin-ranking";
 import newsReducer from './news/news.slice'
 
 export const store = configureStore({
@@ -9,7 +9,8 @@ export const store = configureStore({
         coin: coinReducer,
         statistic: statisticReducer,
         news: newsReducer,
-        search: searchReducer
+        search: searchReducer,
+        priceHistory: priceHistoryReducer
     }
 })
 

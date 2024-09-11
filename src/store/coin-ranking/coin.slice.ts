@@ -1,18 +1,20 @@
-import { CoinPagination } from './../../types/CoinPagination';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { PayloadAction } from '@reduxjs/toolkit';
+import { CoinPagination } from './../../types/CoinPagination';
 import { CoinType, initCoin } from './../../types/Coins';
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCoins } from '../../services/coin-ranking/coins.services';
+import { fetchCoin, fetchCoins } from '../../services/coin-ranking/coins.services';
 import { ALL_COINS, BEST_COIN, TOP_COIN } from '../../constants/constant';
 import { initCoinPagination } from '../../types/CoinPagination';
+import { CoinDetailType, initCoinDetailType } from '../../types/CoinDetailType';
 
 interface CoinState {
     loading: boolean,
     error: string | null,
     topCoins: CoinType[],
     bestCoins: CoinType[]
-    allCoins: CoinPagination
+    allCoins: CoinPagination,
+    coinDetail: CoinDetailType,
 }
 
 const initialState: CoinState = {
@@ -20,7 +22,8 @@ const initialState: CoinState = {
     error: null,
     topCoins: initCoin(),
     bestCoins: initCoin(),
-    allCoins: initCoinPagination()
+    allCoins: initCoinPagination(),
+    coinDetail: initCoinDetailType()
 }
 
 const handlerPending = (state: CoinState) => {
@@ -57,6 +60,12 @@ const coinSlice = createSlice({
             .addCase(fetchCoins.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.payload as string;
+            });
+        builder
+            .addCase(fetchCoin.pending, handlerPending)
+            .addCase(fetchCoin.fulfilled, (state, action: PayloadAction<CoinDetailType>) => {
+                state.loading = false;
+                state.coinDetail = action.payload;
             })
     }
 })
