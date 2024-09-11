@@ -127,12 +127,14 @@ const CryptoDetailPage = () => {
 
             <div className="w-full px-2 lg:px-8 h-full mt-8 flex gap-2 flex-col lg:flex-row">
                 <div className="w-full lg:w-2/3 h-full overflow-scroll py-2 relative px-2">
-                    <SelectDropdown data={timePeriodCategories} selected={timePeriod} onSelect={setTimePeriod} />
+                    <div data-aos="fade-up">
+                        <SelectDropdown data={timePeriodCategories} selected={timePeriod} onSelect={setTimePeriod} />
+                    </div>
                     {loading && <div className="w-full absolute z-10 h-full flex items-center justify-center bg-primary-black-300/20 rounded">
                         <Loading />
                     </div>}
-                    <LineChart history={history} timePeriod={timePeriod} />
 
+                    <LineChart history={history} timePeriod={timePeriod} />
 
                     <div className="mt-4 w-full">
                         <CoinDescription {...coinDetail} />

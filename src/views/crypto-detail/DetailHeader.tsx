@@ -52,7 +52,7 @@ const DetailHeader = () => {
         <header className="h-[70px] lg:h-[85px] w-full border-b-2 border-b-primary-white-200/45">
             <div className="mx-auto h-full px-8 lg:px-12">
                 <div className='flex h-full items-center'>
-                    <Link to="/">
+                    <Link to="/" data-aos="fade-right">
                         <Button className='flex items-center flex-shrink gap-2 py-2 lg:px-4 rounded-full' variant={"ghost"}>
                             <ChevronLeft className='p-0' />
                             <span className='hidden lg:inline-block'>Back</span>

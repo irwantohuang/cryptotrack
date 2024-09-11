@@ -14,7 +14,7 @@ import SecurityTips from "../views/home/SecurityTips"
 import Faq from "../views/home/Faq"
 
 const HomePage = () => {
-    const { loading, error, statistic } = useSelector((state: RootState) => state.statistic);
+    const { statistic } = useSelector((state: RootState) => state.statistic);
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {

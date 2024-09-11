@@ -6,9 +6,9 @@ interface StatisticListProps {
     delay?: string,
 }
 
-const StatisticList = ({ title, subtitle }: StatisticListProps) => {
+const StatisticList = ({ title, subtitle, aos, delay }: StatisticListProps) => {
     return (
-        <div className='flex items-center gap-1'>
+        <div data-aos={aos} data-aos-delay={delay} className='flex items-center gap-1'>
             <p className='inline-block text-sm text-primary-white-200/85'>{ title }: </p>
             <p className='inline-block text-sm text-primary-white'>{ subtitle }</p>
         </div>

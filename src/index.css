@@ -12,6 +12,10 @@
 }
 
 @layer base {
+    html {
+        @apply scroll-smooth
+    }
+
     body {
         @apply bg-primary-black text-primary-white font-primary
     }

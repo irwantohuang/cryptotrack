@@ -17,7 +17,7 @@ const TopCoins = () => {
     }, [dispatch])
     
     return (
-        <section className='h-full w-full py-20'>
+        <section id="topCoins" className='h-full w-full py-20'>
             <div className='container mx-auto h-full px-4 lg:px-0'>
                 
                 <div className='text-center'>
