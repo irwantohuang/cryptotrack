@@ -139,9 +139,14 @@ const CryptoDetailPage = () => {
                     </div>
 
                     <div className="flex flex-col w-full py-4 mt-8 gap-4">
-                        {newsData.articles.map((article, index) => (
-                            <NewsList article={article} index={index} key={index} />
-                        ))}
+                        <h5 className="text-2xl font-secondary text-primary-white-200/75 font-medium">{coinDetail.name} Latest News</h5>
+                        {newsData.articles.length < 1 ?
+                            <p className="text-primary-white-200/50">No news articles available at the moment.</p>
+                            :
+                            newsData.articles.map((article, index) => (
+                                <NewsList article={article} index={index} key={index} />
+                            ))
+                        }
                     </div>
                 </div>
 

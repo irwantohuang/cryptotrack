@@ -151,9 +151,9 @@ const CryptoHeader = () => {
 
 
     // Initial Fetch Search Suggestions
-    useEffect(() => {
-        dispatch(fetchSearch({}))
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(fetchSearch({}))
+    // }, [dispatch])
 
 
     // Redux State

@@ -4,7 +4,7 @@ import { CoinPagination } from './../../types/CoinPagination';
 import { CoinType, initCoin } from './../../types/Coins';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchCoin, fetchCoins } from '../../services/coin-ranking/coins.services';
-import { ALL_COINS, BEST_COIN, TOP_COIN } from '../../constants/constant';
+import { ALL_COINS, BEST_COIN, NEW_COIN, TOP_COIN } from '../../constants/constant';
 import { initCoinPagination } from '../../types/CoinPagination';
 import { CoinDetailType, initCoinDetailType } from '../../types/CoinDetailType';
 
@@ -12,7 +12,8 @@ interface CoinState {
     loading: boolean,
     error: string | null,
     topCoins: CoinType[],
-    bestCoins: CoinType[]
+    bestCoins: CoinType[],
+    newCoins: CoinType[],
     allCoins: CoinPagination,
     coinDetail: CoinDetailType,
 }
@@ -22,6 +23,7 @@ const initialState: CoinState = {
     error: null,
     topCoins: initCoin(),
     bestCoins: initCoin(),
+    newCoins: initCoin(),
     allCoins: initCoinPagination(),
     coinDetail: initCoinDetailType()
 }
@@ -48,6 +50,8 @@ const coinSlice = createSlice({
                         state.topCoins = action.payload.data; break;
                     case BEST_COIN:
                         state.bestCoins = action.payload.data; break;
+                    case NEW_COIN:
+                        state.newCoins = action.payload.data; break;
                     case ALL_COINS:
                         state.allCoins.totalResults = action.payload?.totalResults;
                         if (action.payload.offset === 0) {

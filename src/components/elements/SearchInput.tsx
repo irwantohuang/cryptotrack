@@ -73,7 +73,7 @@ const SearchInput = ({ coins, searchTerm, setSearchTerm }: SearchInputProps) => 
                         Loading...
                     </li>
                     :
-                    cryptoSearch.error ?
+                    cryptoSearch.error || coins.length < 2 ?
                         <li className='flex items-center justify-center gap-4 py-3 hover:bg-primary-black-300'>
                             Data not found
                         </li>
