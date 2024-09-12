@@ -1,6 +1,7 @@
 import CryptoDetailPage from "../pages/CryptoDetailPage";
 import CryptoPage from "../pages/CryptoPage";
 import HomePage from "../pages/HomePage";
+import NewsPage from "../pages/NewsPage";
 import NotFoundPage from "../pages/NotFoundPage";
 
 export const routes = [
@@ -8,4 +9,5 @@ export const routes = [
     { path: "/cryptocurrencies", element: <CryptoPage /> },
     { path: "/cryptocurrencies/:id", element: <CryptoDetailPage /> },
     { path: "/about", element: <NotFoundPage /> },
+    { path: "/news", element: <NewsPage /> },
 ]

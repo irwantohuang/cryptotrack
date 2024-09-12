@@ -1,6 +1,5 @@
 import { Search } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
-// import Button from './Button';
 import { CoinOverviewType } from '../../types/CoinOverview';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store/store';

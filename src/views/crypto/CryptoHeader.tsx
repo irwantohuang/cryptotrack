@@ -151,16 +151,16 @@ const CryptoHeader = () => {
 
 
     // Initial Fetch Search Suggestions
-    // useEffect(() => {
-    //     dispatch(fetchSearch({}))
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(fetchSearch({}))
+    }, [dispatch])
 
 
     // Redux State
     const coinState = useSelector((state: RootState) => state.coin);
 
     return (
-        <div className='w-full py-20 lg:pb-20 lg:pt-[120px]'>
+        <div className='w-full py-4 lg:pb-20 lg:pt-[120px]'>
             <div className="container mx-auto p-4">
                 <div className='text-center max-w-screen-md mx-auto'>
                     <p data-aos="fade-up" className='text-2xl lg:text-4xl font-medium text-accent'>
