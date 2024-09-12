@@ -13,7 +13,7 @@ const Faq = () => {
     return (
         <>
             <div className="container mx-auto h-[3px] rounded-full bg-gradient-to-r from-cyan-400 via-accent to-primary"></div>
-            <div className='w-full h-full py-20'>
+            <section id="faq" className='w-full h-full py-20'>
                 <div className='container mx-auto p-4'>
                     <p data-aos="fade-down" className="text-center text-5xl font-semibold text-primary-300">Frequently Asked Questions</p>
 
@@ -43,7 +43,7 @@ const Faq = () => {
                         ))}
                     </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

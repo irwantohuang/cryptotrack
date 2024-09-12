@@ -1,117 +1,25 @@
-import { CoinType } from '../../types/Coins'
 import CoinList from '../../components/coin/CoinList'
+import ListSkeleton from '../../components/skeleton/ListSkeleton'
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../store/store';
+import { useEffect } from 'react';
+import { CoinOverviewType } from '../../types/CoinOverview';
+import { fetchCoins } from '../../services/coin-ranking/coins.services';
+import { NEW_COIN } from '../../constants/constant';
 
-const NewestCoin = () => {
+interface NewestCoinProps {
+    newCoinOverview: CoinOverviewType[]
+}
 
-    const topCoins: CoinType[] = [
-        {
-            "uuid": "A9Tk3ZmTn",
-            "symbol": "CHIK",
-            "name": "CHIK",
-            "color": "#2d162d",
-            "iconUrl": "https://cdn.coinranking.com/PWZJizJ_b/chick.png",
-            "marketCap": "287447",
-            "price": "0.000346974415256314",
-            "listedAt": 1725518715,
-            "tier": 3,
-            "change": null,
-            "rank": 5813,
-            "sparkline": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                "0.000341613881314973",
-                "0.00034417524488283",
-                "0.000340035050760859",
-                "0.000346467908624721"
-            ],
-            "lowVolume": true,
-            "coinrankingUrl": "https://coinranking.com/coin/A9Tk3ZmTn+chik-chik",
-            "24hVolume": "4132",
-            "btcPrice": "6.377460837e-9",
-            "contractAddresses": [
-                "solana/J6B3vUcsBPoMJM9n8UFRGQttS9s1A7KnToH8QUDzmEDg"
-            ]
-        },
-        {
-            "uuid": "j-QHkp4gwV",
-            "symbol": "SOLMON",
-            "name": "Solamon",
-            "color": "#e2d5c1",
-            "iconUrl": "https://cdn.coinranking.com/AfpeOYazQ/Solmon.png",
-            "marketCap": "5446",
-            "price": "0.000005445843480571",
-            "listedAt": 1725517353,
-            "tier": 3,
-            "change": null,
-            "rank": 7715,
-            "sparkline": [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                "0.000030705370546143",
-                "0.000021312626286198",
-                "0.000023025406222103",
-                "0.000016941234101583"
-            ],
-            "lowVolume": true,
-            "coinrankingUrl": "https://coinranking.com/coin/j-QHkp4gwV+solamon-solmon",
-            "24hVolume": "4784",
-            "btcPrice": "1.00095719e-10",
-            "contractAddresses": [
-                "solana/2Vw33ExmiteynzqWcRqZpJ1JTuUF6zYbEKX8oVXbpump"
-            ]
-        },
-        {
-            "uuid": "78FmZi7iu",
-            "symbol": "TRUMP",
-            "name": "TRUMP MAGA SUPER",
-            "color": "#d3b8b6",
-            "iconUrl": "https://cdn.coinranking.com/ZZzpIITUi/trump-maga-super.png",
-            "marketCap": null,
-            "price": null,
-            "listedAt": 1725511713,
-            "tier": 3,
-            "change": null,
-            "rank": 41785,
-            "sparkline": [],
-            "lowVolume": true,
-            "coinrankingUrl": "https://coinranking.com/coin/78FmZi7iu+trumpmagasuper-trump",
-            "24hVolume": null,
-            "btcPrice": null,
-            "contractAddresses": [
-                "bnb-smart-chain/0xC1b75f11D319A5F1b676073Daa1f5dcDF0163f0D"
-            ]
-        }
-    ]
+const NewestCoin = ({ newCoinOverview }: NewestCoinProps) => {
+
+    const { newCoins, loading, error } = useSelector((state: RootState) => state.coin);
+    const dispatch = useDispatch<AppDispatch>();
+
+    useEffect(() => {
+        const uuids = newCoinOverview.map(coin => coin.uuid);
+        dispatch(fetchCoins({ type: NEW_COIN, request: { uuids, timePeriod: '7d' } }))
+    }, [dispatch, newCoinOverview])
 
     return (
         <section className='w-full h-full py-20 bg-slate-900'>
@@ -126,9 +34,12 @@ const NewestCoin = () => {
                 </div>
 
                 <div className="flex flex-col items-center justify-center mt-8 gap-6">
-                    {topCoins.map((coin, index) => (
-                        <CoinList key={coin.uuid} coin={coin} index={index} />
-                    ))}
+                    {loading ? Array.from({ length: 3 }).map((_, index) => (
+                        <ListSkeleton key={index} />
+                    )) :
+                        newCoins.map((coin, index) => (
+                            <CoinList key={coin.uuid} coin={coin} index={index} />
+                        ))}
                 </div>
             </div>
         </section>

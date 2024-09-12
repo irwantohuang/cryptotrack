@@ -19,8 +19,12 @@ const Hero = () => {
                             className="rounded bg-primary-black/50 mt-8 py-6 px-4 max-w-lg md:max-w-xl mx-auto lg:mx-0 overflow-hidden">
                             <p data-aos="fade-right" data-aos-delay="100" className="text-xl font-medium text-primary-white-200">Explore the top-ranking cryptocurrencies, latest news, and more. Stay ahead in the world of digital finance.</p>
                             <div className="flex items-center justify-center lg:justify-start gap-4 flex-wrap mt-4 z-10">
-                                <Button data-aos="fade-up" data-aos-delay="200" className="text-lg font-semibold" size={"pill"}>Start exploring</Button>
-                                <Button data-aos="fade-up" data-aos-delay="300" className="text-lg font-semibold" variant={"outline"} size={"pill"}>Learn About Crypto</Button>
+                                <Button data-aos="fade-up" data-aos-delay="200" className="text-lg font-semibold" size={"pill"}>
+                                    <a href="#topCoins">Start exploring</a>
+                                </Button>
+                                <Button data-aos="fade-up" data-aos-delay="300" className="text-lg font-semibold" variant={"outline"} size={"pill"}>
+                                    <a href="#faq">Learn About Crypto</a>
+                                </Button>
                             </div>
                         </div>
                     </div>

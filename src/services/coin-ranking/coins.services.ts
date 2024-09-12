@@ -1,3 +1,4 @@
+import { SingleCoinRequest } from './../../types/request/CoinRequest';
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { coinRankingApi } from "../../api/axios";
 import { CoinRequest } from "../../types/request/CoinRequest";
@@ -9,14 +10,10 @@ interface FetchCoinRequestType {
 }
 
 export const fetchCoins = createAsyncThunk('crypto/fetchCoins', async ({type, request}: FetchCoinRequestType, { rejectWithValue }) => {
-
-    console.log("Request Here ... -> ", request)
-
     try {
         const response = await coinRankingApi.get("/coins", {
             params: request
         })
-
         const data = response.data.data.coins;
         const totalResults = response.data.data.stats.total;
 
@@ -33,13 +30,21 @@ export const fetchCoins = createAsyncThunk('crypto/fetchCoins', async ({type, re
                 data: data
             }
         }
-        
-        // return {
-        //     type: type,
-        //     data: response.data.data.coins
-        // }
     } catch (error) {
         console.log("[Fetch All Coins] Error ... ", error)
+        return rejectWithValue(error);
+    }
+})
+
+export const fetchCoin = createAsyncThunk('crypto/fetchCoin', async({uuid, request}: SingleCoinRequest, { rejectWithValue }) => {
+    try {
+        const response = await coinRankingApi.get(`/coin/${uuid}`, {
+            params: request
+        })
+
+        return response.data.data.coin
+    } catch (error) {
+        console.log("[Fetch Sigle Coin] Error ...", error)
         return rejectWithValue(error);
     }
 })

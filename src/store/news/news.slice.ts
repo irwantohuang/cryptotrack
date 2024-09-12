@@ -32,7 +32,15 @@ const newsSlice = createSlice({
             .addCase(fetchNewsEverything.pending, handlerPending)
             .addCase(fetchNewsEverything.fulfilled, (state, action: PayloadAction<NewsResponseType>) => {
                 state.loading = false;
-                state.newsData = action.payload;
+                console.log("Action -> ", action.payload)
+
+                if (action.payload.page === 1) {
+                    state.newsData = action.payload;
+                } else {
+                    state.newsData.articles = [...state.newsData.articles, ...action.payload.articles];
+                    state.newsData.status = action.payload.status;
+                    state.newsData.totalResults = action.payload.totalResults;
+                }
             })
             .addCase(fetchNewsEverything.rejected, (state, action) => {
                 state.loading = false;

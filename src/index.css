@@ -12,6 +12,10 @@
 }
 
 @layer base {
+    html {
+        @apply scroll-smooth
+    }
+
     body {
         @apply bg-primary-black text-primary-white font-primary
     }
@@ -27,4 +31,17 @@
 
 .scrollbar:hover::-webkit-scrollbar-thumb {
     @apply bg-primary-black-300;
+}
+
+
+/* .scrollbar-hidden {
+    overflow: hidden;
+} */
+
+.scrollbar-hidden::-webkit-scrollbar-thumb {
+    @apply bg-transparent;
+}
+
+.scroll-hidden::-webkit-scrollbar {
+    @apply hidden /* Hides the scrollbar */
 }

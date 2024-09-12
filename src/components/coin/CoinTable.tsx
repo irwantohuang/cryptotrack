@@ -3,11 +3,10 @@ import { ChevronDown, ChevronsUpDown, ChevronUp, IconNode } from 'lucide-react'
 import { ReactNode } from 'react'
 import { CoinHeaderType } from '../../data/coinHeaders'
 import Button from '../elements/Button'
-import { CoinOverviewType } from '../../types/CoinOverview'
 import { CoinType } from '../../types/Coins'
 import { formatNumber } from '../../utils/utility'
 import Sparkline from '../elements/chart/Sparkline'
-import Loading from '../elements/Loading'
+import { Link } from 'react-router-dom'
 
 interface CoinTableProps {
     children: ReactNode,
@@ -77,7 +76,7 @@ interface TableBodyProps {
 
 const TableBody = ({ coins, headers }: TableBodyProps) => {
     if (coins.length === 0) return null;
-    
+
     return (
         <tbody>
             {coins.map((row, index) => (
@@ -86,7 +85,13 @@ const TableBody = ({ coins, headers }: TableBodyProps) => {
                         <td key={colIndex} className={`px-6 py-2 border-b border-b-primary-white/15 whitespace-nowrap ${header.id === 'name' ? 'sticky left-0 bg-primary-black group-hover:bg-primary-black-200' : ''}`}
                             style={{ textAlign: header.align }}
                         >
-                            {mapCellValue(header.id, row[header.id], row)}
+                            {header.id === 'name' ? (
+                                <Link to={`/cryptocurrencies/${row.uuid}`}>
+                                    {mapCellValue(header.id, row[header.id], row)}
+                                </Link>
+                            ) : (
+                                mapCellValue(header.id, row[header.id], row)
+                            )}
                         </td>
                     ))}
                 </tr>
