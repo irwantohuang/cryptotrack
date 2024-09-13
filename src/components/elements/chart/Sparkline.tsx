@@ -8,10 +8,11 @@ import {
     Tooltip,
     Filler,
     ChartData,
+    LineController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler, LineController);
 
 interface SparklineProps {
     data: number[];
