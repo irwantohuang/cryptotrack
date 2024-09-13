@@ -168,7 +168,7 @@ const CryptoPage = () => {
 
                 <div className="mt-12">
                     <div className="max-w-screen-md mx-auto">
-                        <SearchInput coins={searchSuggestions} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                        <SearchInput coins={searchSuggestions} searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder="Search Coin..." />
                     </div>
 
                     <div className="mt-2 md:mt-4">
