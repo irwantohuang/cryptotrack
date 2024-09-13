@@ -10,6 +10,7 @@ interface FetchCoinRequestType {
 }
 
 export const fetchCoins = createAsyncThunk('crypto/fetchCoins', async ({type, request}: FetchCoinRequestType, { rejectWithValue }) => {
+    console.log("Request here -> ", request)
     try {
         const response = await coinRankingApi.get("/coins", {
             params: request
@@ -31,7 +32,7 @@ export const fetchCoins = createAsyncThunk('crypto/fetchCoins', async ({type, re
             }
         }
     } catch (error) {
-        console.log("[Fetch All Coins] Error ... ", error)
+        console.log("[Fetch All Coins] Error ... ", rejectWithValue(error))
         return rejectWithValue(error);
     }
 })

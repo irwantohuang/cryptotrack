@@ -1,5 +1,5 @@
 import { CoinType } from '../../types/Coins'
-import { formatNumber } from '../../utils/utility'
+import { formatNumber, formatPrice } from '../../utils/utility'
 import Sparkline from '../elements/chart/Sparkline'
 
 interface CoinListProps {
@@ -30,12 +30,12 @@ const CoinList = ({ coin, index }: CoinListProps) => {
                             <p className="text-lg font-medium text-primary-white">{name} ({symbol})</p>
                             <div>
                                 <p className='inline-block text-primary-white-200/75'>
-                                    {price ? `$ ${formatNumber(Number(price), 4, 1)}` : '-'}
+                                    {price ? `$ ${formatPrice(Number(price), 8)}` : '-'}
                                 </p>
                                 <p className='inline-block ps-2'>
                                     {change !== null && <span className={`${Number(change) > 0 ? 'text-green-500' : 'text-red-500'}`}>
                                         ({Number(change) > 0 && '+'}
-                                        {formatNumber(Number(change))}% 24h)
+                                        {formatPrice(Number(change), 2)}% 24h)
                                     </span>}
                                 </p>
                             </div>

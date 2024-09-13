@@ -13,7 +13,7 @@ coinRankingApi.interceptors.response.use(
     error => {
         console.log('Axios interceptors error ...' , error)
         if (error) {
-            throw error?.response?.data?.message
+            throw error?.response?.data?.message || error?.message
         }
     }
 )

@@ -54,6 +54,7 @@ const CryptoDetailPage = () => {
             q: coinDetail.name,
             sortBy: 'publishedAt',
             pageSize: 3,
+            page: 1,
             domains: domains,
             language: "en"
         }))

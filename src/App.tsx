@@ -1,7 +1,7 @@
 import MainLayout from "./layout/MainLayout"
 import MainView from "./layout/MainView"
 
-function App() {
+const App = () => {
     return (
         <MainLayout>
             <MainView />

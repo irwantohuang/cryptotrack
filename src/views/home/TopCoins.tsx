@@ -7,9 +7,10 @@ import { Link } from "react-router-dom";
 import { TOP_COIN } from "../../constants/constant";
 import CoinTable from "../../components/coin/CoinTable";
 import { homeCoinHeader } from "../../data/coinHeaders";
+import Loading from "../../components/elements/Loading";
 
 const TopCoins = () => {
-    const { loading, error, topCoins } = useSelector((state: RootState) => state.coin);
+    const { loading, topCoins } = useSelector((state: RootState) => state.coin);
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
@@ -35,12 +36,15 @@ const TopCoins = () => {
                     </p>
                 </div>
 
-                <div className='overflow-x-auto scrollbar w-full lg:px-24 px-0 mt-8 my-4'>
+                <div className='overflow-x-auto relative scrollbar w-full lg:px-24 px-0 mt-8 my-4'>
                     <CoinTable>
                         <CoinTable.TableHead headers={homeCoinHeader} />
                         <CoinTable.TableBody headers={homeCoinHeader} coins={topCoins} />
-
                     </CoinTable>
+
+                    {loading && <div className="absolute w-full h-full flex items-center justify-center inset-0 bg-primary-black/50 z-[101]">
+                        <Loading />
+                    </div>}
                 </div>
 
                 <div className="flex items-center justify-center mt-8">

@@ -17,8 +17,10 @@ const NewestCoin = ({ newCoinOverview }: NewestCoinProps) => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        const uuids = newCoinOverview.map(coin => coin.uuid);
-        dispatch(fetchCoins({ type: NEW_COIN, request: { uuids, timePeriod: '7d' } }))
+        if (newCoinOverview.length > 1) {
+            const uuids = newCoinOverview.map(coin => coin.uuid);
+            dispatch(fetchCoins({ type: NEW_COIN, request: { uuids, timePeriod: '7d' } }))
+        }
     }, [dispatch, newCoinOverview])
 
     return (
