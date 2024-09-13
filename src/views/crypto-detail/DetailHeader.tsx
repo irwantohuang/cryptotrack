@@ -60,7 +60,7 @@ const DetailHeader = () => {
                     </Link>
 
                     <div className='w-full px-2 lg:px-12 flex-grow mx-auto'>
-                        <SearchInput coins={coinSuggestions} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+                        <SearchInput coins={coinSuggestions} searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder='Search Coins...' />
                     </div>
                 </div>
             </div>

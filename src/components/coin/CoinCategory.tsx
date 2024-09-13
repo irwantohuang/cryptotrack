@@ -1,8 +1,6 @@
 import { ChevronLeft, ChevronRight } from "lucide-react"
-import { coinCategories } from "../../data/coinCategory"
 import Button from "../elements/Button"
 import { useEffect, useRef, useState } from "react"
-
 
 interface CategoryProps {
     categories: string[],
@@ -37,31 +35,6 @@ const CoinCategory = ({ categories, selected, onSelect }: CategoryProps) => {
             })
         }
     }
-
-    // const updateButtonVisibility = () => {
-    //     if (sectionRef.current == null) return;
-
-    //     const containerWidth = sectionRef.current.clientWidth;
-    //     const contentWidth = sectionRef.current.scrollWidth;
-
-    //     // Cek apakah konten lebih lebar daripada kontainer
-    //     setShowPreviousButton(translate > 0);
-    //     setShowNextButton(translate + containerWidth < contentWidth);
-    // };
-
-    // useEffect(() => {
-    //     // Jalankan update visibility saat komponen pertama kali dirender
-    //     updateButtonVisibility();
-
-    //     // Observer untuk mendengarkan perubahan ukuran
-    //     const observer = new ResizeObserver(() => updateButtonVisibility());
-    //     if (sectionRef.current) {
-    //         observer.observe(sectionRef.current);
-    //     }
-
-    //     // Bersihkan observer ketika komponen di-unmount
-    //     return () => observer.disconnect();
-    // }, [categories, translate]);
 
     useEffect(() => {
         if (sectionRef.current == null) return;

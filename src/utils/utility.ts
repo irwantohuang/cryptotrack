@@ -1,18 +1,18 @@
 import moment from "moment";
 
-export const formatNumber = (value: number | undefined, digit?: number, type?: number) => {
-    if (value) {
-        if (type === 1) {
-            return new Intl.NumberFormat(undefined, {
-                notation: "compact",
-                maximumFractionDigits: (digit) ? digit : 2,
-            }).format(value);
-        } else if (type === 2) {
-            return Number(Number(value).toFixed(2)).toLocaleString();
-        }
-    } 
-    return "-";
-}
+// export const formatNumber = (value: number | undefined, digit?: number, type?: number) => {
+//     if (value) {
+//         if (type === 1) {
+//             return new Intl.NumberFormat(undefined, {
+//                 notation: "compact",
+//                 maximumFractionDigits: (digit) ? digit : 2,
+//             }).format(value);
+//         } else if (type === 2) {
+//             return Number(Number(value).toFixed(2)).toLocaleString();
+//         }
+//     } 
+//     return "-";
+// }
 
 export const formatPrice = (value: number, digit?: number, compact?: boolean) => {
     let precision = 2;
