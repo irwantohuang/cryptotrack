@@ -1,5 +1,5 @@
 import { CoinType } from '../../types/Coins'
-import { formatNumber, formatPrice } from '../../utils/utility'
+import { formatPrice } from '../../utils/utility'
 import Sparkline from '../elements/chart/Sparkline'
 
 interface CoinListProps {

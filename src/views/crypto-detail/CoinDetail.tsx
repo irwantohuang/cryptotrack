@@ -1,6 +1,6 @@
 import { ChevronDown, ChevronUp } from "lucide-react"
 import { CoinDetailType } from "../../types/CoinDetailType"
-import { formatNumber, formatPrice } from "../../utils/utility"
+import { formatPrice } from "../../utils/utility"
 import CoinStatistics from "../../components/coin/CoinStatistics"
 
 const CoinDetail = ({ name, iconUrl, symbol, marketCap, change, price, rank, fullyDilutedMarketCap, '24hVolume': volume24h, supply, allTimeHigh, numberOfMarkets, numberOfExchanges, tags }: CoinDetailType) => {
@@ -20,8 +20,6 @@ const CoinDetail = ({ name, iconUrl, symbol, marketCap, change, price, rank, ful
 
             <div data-aos="fade-up" className="mt-3 flex items-center gap-4">
                 <h3 className="font-semibold text-4xl">
-                    {/* ${Number(price) < 1000 ? formatNumber(Number(price), 8, 1) : formatNumber(Number(price), 2, 2)} */}
-
                     {formatPrice(Number(price), 2)}
                 </h3>
 
