@@ -3,7 +3,7 @@ import NewsCard from "../components/news/NewsCard"
 import { AppDispatch, RootState } from "../store/store"
 import { useEffect } from "react"
 import { NEWS_DOMAINS } from "../constants/constant"
-import { fetchNewsEverything } from "../services/news-api/index.services"
+import { fetchNewsEverything } from "../services/news-api"
 import Button from "../components/elements/Button"
 import Loading from "../components/elements/Loading"
 

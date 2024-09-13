@@ -1,11 +1,13 @@
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../../store/store"
 import { useEffect } from "react";
-import { fetchNewsEverything } from "../../services/news-api/index.services";
+import { fetchNewsEverything } from "../../services/news-api";
 import { NEWS_DOMAINS } from "../../constants/constant";
 import NewsCard from "../../components/news/NewsCard";
 import Button from "../../components/elements/Button";
 import { Link } from "react-router-dom";
+import NewsCardSkeleton from "../../components/skeleton/NewsCardSkeleton";
+import ErrorFetch from "../../components/ErrorFetch";
 
 const News = () => {
     const { loading, error, newsData } = useSelector((state: RootState) => state.news);
@@ -41,16 +43,21 @@ const News = () => {
 
 
                 <div className="grid justify-center mx-auto grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-x-2 gap-y-8 mt-12">
-                    {newsData.articles.map((article, index) => (
-                        <NewsCard article={article} index={index} key={index} />
-                    ))}
+                    {loading ? Array.from({ length: 3 }).map((_, index) => (
+                        <NewsCardSkeleton key={index} />
+                    )) :
+                        error ? <ErrorFetch /> :
+                            newsData.articles.map((article, index) => (
+                                <NewsCard article={article} index={index} key={index} />
+                            ))
+                    }
                 </div>
 
                 <div className="flex items-center justify-center mt-8">
-                    <Button 
+                    <Button
                         data-aos="fade"
                         data-aos-duration="500"
-                        size={"pill"} 
+                        size={"pill"}
                         className="px-24
                         ">
                         <Link to="/news">

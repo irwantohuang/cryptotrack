@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { initStatistic, StatisticType } from "../../types/Statistic";
-import { fetchStatistic } from "../../services/coin-ranking/statistic.services";
+import { fetchStatistic } from "../../services/coin-ranking"; 
 
 
 interface StatisticState {

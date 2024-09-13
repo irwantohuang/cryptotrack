@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { CoinOverviewType } from "../../types/CoinOverview"
 import { AppDispatch, RootState } from "../../store/store"
 import { useEffect } from "react"
-import { fetchCoins } from "../../services/coin-ranking/index.services"
+import { fetchCoins } from "../../services/coin-ranking"
 import { BEST_COIN } from '../../constants/constant'
 import CoinCard from "../../components/coin/CoinCard"
 import CardSkeleton from "../../components/skeleton/CardSkeleton"
@@ -13,7 +13,6 @@ interface BestCoinsProps {
 }
 
 const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
-
     const { bestCoins, loading, error } = useSelector((state: RootState) => state.coin);
     const dispatch = useDispatch<AppDispatch>();
 

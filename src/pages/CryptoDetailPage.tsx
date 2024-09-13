@@ -15,8 +15,8 @@ import DetailHeaderStatistic from "../views/crypto-detail/DetailHeaderStatistic"
 import DetailHeader from "../views/crypto-detail/DetailHeader";
 import CoinDetail from "../views/crypto-detail/CoinDetail";
 
-import { fetchCoin, fetchPriceHistory } from "../services/coin-ranking/index.services";
-import { fetchNewsEverything } from "../services/news-api/index.services";
+import { fetchCoin, fetchPriceHistory } from "../services/coin-ranking";
+import { fetchNewsEverything } from "../services/news-api";
 import { fetchStatistic } from "../services/coin-ranking/statistic.services";
 
 const CryptoDetailPage = () => {
