@@ -14,6 +14,21 @@ export const formatNumber = (value: number | undefined, digit?: number, type?: n
     return "-";
 }
 
+export const formatPrice = (value: number, digit?: number, compact?: boolean) => {
+    let precision = 2;
+
+    if (value < 1) {
+        precision = 8
+    } else if (digit) {
+        precision = digit;
+    }
+
+    return new Intl.NumberFormat(undefined, {
+        notation: (compact) ? "compact" : "standard",
+        maximumFractionDigits: precision,
+    }).format(value);
+}
+
 
 const timeAgo: { amount: number, name: Intl.RelativeTimeFormatUnit }[] = [
     { amount: 60, name: "seconds" },

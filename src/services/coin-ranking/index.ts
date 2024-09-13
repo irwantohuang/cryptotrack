@@ -1,3 +1,4 @@
+import { fetchStatistic } from './statistic.services';
 import { fetchSearch } from './search.services';
 import { fetchPriceHistory } from './price-history.services';
 import { fetchCoins, fetchCoin } from "./coins.services";
@@ -7,4 +8,5 @@ export {
     fetchCoin,
     fetchPriceHistory,
     fetchSearch,
+    fetchStatistic
 }

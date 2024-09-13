@@ -4,13 +4,13 @@ import { Clock } from 'lucide-react'
 
 interface NewsCardProps {
     article: NewsArticleType,
-    index: number
+    index?: number
 }
 
 const NewsList = ({ article, index }: NewsCardProps) => {
     const { url, urlToImage, title, description, source, publishedAt } = article
     return (
-        <a data-aos="fade-right" data-aos-delay={index * 100} href={url} target='_blank' key={index} className='cursor-pointer transition-all duration-150 hover: hover:shadow-md rounded-md group flex items-start gap-4'>
+        <a data-aos="fade-right" data-aos-delay={index && index * 100} href={url} target='_blank' className='cursor-pointer transition-all duration-150 hover: hover:shadow-md rounded-md group flex items-start gap-4'>
             <div className='flex-shrink relative aspect-video min-w-[300px] max-w-[300px] min-h-[175px] max-h-[175px] rounded overflow-hidden'>
                 <img src={urlToImage} alt={title} className='object-cover object-center' />
             </div>

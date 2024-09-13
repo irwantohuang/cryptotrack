@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ChevronDown, ChevronsUpDown, ChevronUp, IconNode } from 'lucide-react'
+import { ChevronDown, ChevronsUpDown, ChevronUp } from 'lucide-react'
 import { ReactNode } from 'react'
 import { CoinHeaderType } from '../../data/coinHeaders'
 import Button from '../elements/Button'
 import { CoinType } from '../../types/Coins'
-import { formatNumber } from '../../utils/utility'
+import { formatNumber, formatPrice } from '../../utils/utility'
 import Sparkline from '../elements/chart/Sparkline'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../store/store'
 
 interface CoinTableProps {
     children: ReactNode,
@@ -75,27 +77,36 @@ interface TableBodyProps {
 
 
 const TableBody = ({ coins, headers }: TableBodyProps) => {
+
+    const { error } = useSelector((state: RootState) => state.coin);
+
     if (coins.length === 0) return null;
 
     return (
         <tbody>
-            {coins.map((row, index) => (
-                <tr key={index} className='hover:bg-primary-black-200 group'>
-                    {headers.map((header, colIndex) => (
-                        <td key={colIndex} className={`px-6 py-2 border-b border-b-primary-white/15 whitespace-nowrap ${header.id === 'name' ? 'sticky left-0 bg-primary-black group-hover:bg-primary-black-200' : ''}`}
-                            style={{ textAlign: header.align }}
-                        >
-                            {header.id === 'name' ? (
-                                <Link to={`/cryptocurrencies/${row.uuid}`}>
-                                    {mapCellValue(header.id, row[header.id], row)}
-                                </Link>
-                            ) : (
-                                mapCellValue(header.id, row[header.id], row)
-                            )}
-                        </td>
-                    ))}
-                </tr>
-            ))}
+            {coins.length <= 1 || error ? <tr>
+                <td colSpan={headers.length} className='w-full text-center py-2'>No Data Found</td>
+            </tr> : (
+                coins.map((row, index) => (
+                    <tr key={index} className='hover:bg-primary-black-200 group'>
+                        {headers.map((header, colIndex) => (
+                            <td key={colIndex} className={`px-6 py-2 border-b border-b-primary-white/15 whitespace-nowrap 
+                                ${header.id === 'name' ? 'sticky left-0 bg-primary-black group-hover:bg-primary-black-200' : ''}
+                                ${header.id === 'change' ? (Number(row.change) < 0 ? 'text-red-500' : 'text-green-500') : ''}`}
+                                style={{ textAlign: header.align }}
+                            >
+                                {header.id === 'name' ? (
+                                    <Link to={`/cryptocurrencies/${row.uuid}`}>
+                                        {mapCellValue(header.id, row[header.id], row)}
+                                    </Link>
+                                ) : (
+                                    mapCellValue(header.id, row[header.id], row)
+                                )}
+                            </td>
+                        ))}
+                    </tr>
+                ))
+            )}
         </tbody>
     )
 }
@@ -105,7 +116,7 @@ const mapCellValue = (headerId: keyof CoinType, value: any, row: CoinType) => {
         case "price":
         case "marketCap":
         case "24hVolume":
-            return `$ ${formatNumber(value, undefined, 2)}`
+            return `$ ${formatPrice(value, 2)}`
         case "change":
             return `${value} %`
         case "sparkline":

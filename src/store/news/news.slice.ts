@@ -1,10 +1,7 @@
 import { PayloadAction } from '@reduxjs/toolkit';
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import { createSlice } from "@reduxjs/toolkit"
-import { fetchNewsEverything } from "../../services/news-api/index.services"
+import { fetchNewsEverything } from "../../services/news-api"
 import { initNewsResponse, NewsResponseType } from '../../types/NewsResponse';
-
 
 interface NewsState {
     loading: boolean,
@@ -32,8 +29,6 @@ const newsSlice = createSlice({
             .addCase(fetchNewsEverything.pending, handlerPending)
             .addCase(fetchNewsEverything.fulfilled, (state, action: PayloadAction<NewsResponseType>) => {
                 state.loading = false;
-                console.log("Action -> ", action.payload)
-
                 if (action.payload.page === 1) {
                     state.newsData = action.payload;
                 } else {

@@ -43,5 +43,16 @@
 }
 
 .scroll-hidden::-webkit-scrollbar {
-    @apply hidden /* Hides the scrollbar */
+    @apply hidden
+    /* Hides the scrollbar */
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    /* Removes default appearance */
+    height: 16px;
+    width: 16px;
+    background: url('path-to-your-icon.svg') no-repeat center;
+    background-size: contain;
+    cursor: pointer;
 }

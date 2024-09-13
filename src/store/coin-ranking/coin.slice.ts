@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PayloadAction } from '@reduxjs/toolkit';
 import { CoinPagination } from './../../types/CoinPagination';
 import { CoinType, initCoin } from './../../types/Coins';
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCoin, fetchCoins } from '../../services/coin-ranking/coins.services';
+import { fetchCoin, fetchCoins } from '../../services/coin-ranking';
 import { ALL_COINS, BEST_COIN, NEW_COIN, TOP_COIN } from '../../constants/constant';
 import { initCoinPagination } from '../../types/CoinPagination';
 import { CoinDetailType, initCoinDetailType } from '../../types/CoinDetailType';
@@ -41,9 +40,6 @@ const coinSlice = createSlice({
         builder
             .addCase(fetchCoins.pending, handlerPending)
             .addCase(fetchCoins.fulfilled, (state, action: PayloadAction<{ type: string, data: CoinType[], totalResults?: number, offset?: number }>) => {
-
-                console.log("data ", action.payload)
-
                 state.loading = false;
                 switch (action.payload.type) {
                     case TOP_COIN:

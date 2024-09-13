@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { CoinOverviewType } from '../../types/CoinOverview';
 import { fetchCoins } from '../../services/coin-ranking/coins.services';
 import { NEW_COIN } from '../../constants/constant';
+import ErrorFetch from '../../components/ErrorFetch';
 
 interface NewestCoinProps {
     newCoinOverview: CoinOverviewType[]
@@ -17,8 +18,10 @@ const NewestCoin = ({ newCoinOverview }: NewestCoinProps) => {
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        const uuids = newCoinOverview.map(coin => coin.uuid);
-        dispatch(fetchCoins({ type: NEW_COIN, request: { uuids, timePeriod: '7d' } }))
+        if (newCoinOverview.length > 1) {
+            const uuids = newCoinOverview.map(coin => coin.uuid);
+            dispatch(fetchCoins({ type: NEW_COIN, request: { uuids, timePeriod: '7d' } }))
+        }
     }, [dispatch, newCoinOverview])
 
     return (
@@ -37,9 +40,10 @@ const NewestCoin = ({ newCoinOverview }: NewestCoinProps) => {
                     {loading ? Array.from({ length: 3 }).map((_, index) => (
                         <ListSkeleton key={index} />
                     )) :
-                        newCoins.map((coin, index) => (
-                            <CoinList key={coin.uuid} coin={coin} index={index} />
-                        ))}
+                        error ? <ErrorFetch /> :
+                            newCoins.map((coin, index) => (
+                                <CoinList key={coin.uuid} coin={coin} index={index} />
+                            ))}
                 </div>
             </div>
         </section>

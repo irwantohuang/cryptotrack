@@ -2,23 +2,25 @@ import { useDispatch, useSelector } from "react-redux"
 import { CoinOverviewType } from "../../types/CoinOverview"
 import { AppDispatch, RootState } from "../../store/store"
 import { useEffect } from "react"
-import { fetchCoins } from "../../services/coin-ranking/index.services"
+import { fetchCoins } from "../../services/coin-ranking"
 import { BEST_COIN } from '../../constants/constant'
 import CoinCard from "../../components/coin/CoinCard"
 import CardSkeleton from "../../components/skeleton/CardSkeleton"
+import ErrorFetch from "../../components/ErrorFetch"
 
 interface BestCoinsProps {
     bestCoinOverview: CoinOverviewType[]
 }
 
 const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
-
     const { bestCoins, loading, error } = useSelector((state: RootState) => state.coin);
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
-        const uuids = bestCoinOverview.map(coin => coin.uuid);
-        dispatch(fetchCoins({ type: BEST_COIN, request: { uuids, timePeriod: '7d' } }))
+        if (bestCoinOverview.length > 1) {
+            const uuids = bestCoinOverview.map(coin => coin.uuid);
+            dispatch(fetchCoins({ type: BEST_COIN, request: { uuids, timePeriod: '7d' } }))
+        }
     }, [dispatch, bestCoinOverview])
 
     return (
@@ -33,15 +35,14 @@ const BestCoins = ({ bestCoinOverview }: BestCoinsProps) => {
                     </p>
                 </div>
 
-                <div className="flex flex-wrap items-center justify-center max-w-screen-xl mx-auto mt-8 gap-x-6 gap-y-4">
-
-
+                <div className="flex flex-wrap items-stretch justify-center max-w-screen-xl mx-auto mt-8 gap-x-6 gap-y-4">
                     {loading ? Array.from({ length: 3 }).map((_, index) => (
                         <CardSkeleton key={index} />
                     )) :
-                        bestCoins.map((coin, index) => (
-                            <CoinCard key={coin.uuid} coin={coin} index={index} />
-                        ))}
+                        error ? <ErrorFetch /> :
+                            bestCoins.map((coin, index) => (
+                                <CoinCard key={coin.uuid} coin={coin} index={index} />
+                            ))}
                 </div>
             </div>
         </section>
