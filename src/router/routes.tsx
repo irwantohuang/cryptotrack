@@ -8,6 +8,6 @@ export const routes = [
     { path: "/", element: <HomePage /> },
     { path: "/cryptocurrencies", element: <CryptoPage /> },
     { path: "/cryptocurrencies/:id", element: <CryptoDetailPage /> },
-    { path: "/about", element: <NotFoundPage /> },
+    { path: "*", element: <NotFoundPage /> },
     { path: "/news", element: <NewsPage /> },
 ]
