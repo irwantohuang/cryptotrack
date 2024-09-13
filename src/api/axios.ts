@@ -18,9 +18,9 @@ coinRankingApi.interceptors.response.use(
     }
 )
 
-
+const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 export const newsApi = axios.create({
-    baseURL: import.meta.env.VITE_NEWS_BASE_URL,
+    baseURL: proxyUrl + import.meta.env.VITE_NEWS_BASE_URL,
     headers: {
         'Authorization': import.meta.env.VITE_NEWS_API_KEY,
         'X-Api-Key': import.meta.env.VITE_NEWS_API_KEY,
