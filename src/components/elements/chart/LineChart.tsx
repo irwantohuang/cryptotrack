@@ -13,7 +13,7 @@ import {
 import { Chart } from 'react-chartjs-2';
 import { PriceHistoryType } from '../../../types/PriceHistory';
 import moment from 'moment';
-import { formatNumber, formatTimestamp, removeEmptyLabels } from '../../../utils/utility';
+import { formatPrice, formatTimestamp, removeEmptyLabels } from '../../../utils/utility';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
 
@@ -136,7 +136,7 @@ const LineChart = ({ history, timePeriod }: { history: PriceHistoryType[], timeP
                             },
                             label: (context) => {
                                 const price = context.raw;
-                                return `Price $${formatNumber(Number(price), undefined, 2)}`;
+                                return `Price $${formatPrice(Number(price), 2)}`;
                             },
 
                         }
