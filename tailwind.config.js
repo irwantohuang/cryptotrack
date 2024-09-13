@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 
-import bg1 from './src/assets/images/bg-1.jpg'
-
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
     theme: {
@@ -15,7 +13,7 @@ export default {
                 }
             },   
             backgroundImage: {
-                'hero-bg-gradient': `linear-gradient(to right, rgba(108, 53, 222, 0.5), rgba(0, 0, 0, 0.5)), url('./src/assets/images/bg-1.jpg')`,
+                'hero-bg-gradient': `linear-gradient(to right, rgba(108, 53, 222, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/bg-1.jpg')`,
             },
             fontFamily: {
                 primary: ["Inter", "sans-serif"],

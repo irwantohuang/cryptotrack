@@ -1,5 +1,5 @@
 import Button from "../../components/elements/Button"
-import HeroChain from '../../assets/images/hero-side-bg.png';
+import HeroChain from '/assets/hero-side-bg.png';
 
 const Hero = () => {
     return (
