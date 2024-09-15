@@ -9,6 +9,7 @@ import Sparkline from '../elements/chart/Sparkline'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
+import Image from '../elements/Image'
 
 interface CoinTableProps {
     children: ReactNode,
@@ -139,7 +140,7 @@ const DataSparkline = ({ sparkline }: { sparkline: string[] }) => {
 const DataName = ({ iconUrl, name, symbol }: CoinType) => {
     return (
         <div className="flex items-center justify-start gap-2">
-            <img src={iconUrl} alt="" className="w-6 h-6" />
+            <Image className='w-6 h-6' variant={"profile"} src={iconUrl} alt={name} />
             <span className="me-4 text-primary-white group-hover:text-accent font-medium font-secondary">{name}
                 <span className="text-primary-white-200 group-hover:text-primary-white"> ({symbol})</span>
             </span>

@@ -2,6 +2,7 @@ import { ChevronDown, ChevronUp } from "lucide-react"
 import { CoinDetailType } from "../../types/CoinDetailType"
 import { formatPrice } from "../../utils/utility"
 import CoinStatistics from "../../components/coin/CoinStatistics"
+import Image from "../../components/elements/Image"
 
 const CoinDetail = ({ name, iconUrl, symbol, marketCap, change, price, rank, fullyDilutedMarketCap, '24hVolume': volume24h, supply, allTimeHigh, numberOfMarkets, numberOfExchanges, tags }: CoinDetailType) => {
 
@@ -9,7 +10,7 @@ const CoinDetail = ({ name, iconUrl, symbol, marketCap, change, price, rank, ful
         <div className="mt-2 lg:mt-0 w-full">
             <div data-aos="fade-left" className="flex items-center whitespace-nowrap flex-wrap gap-x-4 gap-y-2">
                 <div className="w-8 h-8">
-                    <img src={iconUrl} alt={name} className="object-cover" />
+                    <Image className='object-cover w-full' variant={"profile"} src={iconUrl} alt={name} />
                 </div>
                 <h3 className="text-3xl text-primary-white font-semibold">{name} </h3>
                 <div className="flex items-center gap-2">

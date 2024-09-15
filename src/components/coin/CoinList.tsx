@@ -1,6 +1,7 @@
 import { CoinType } from '../../types/Coins'
 import { formatPrice } from '../../utils/utility'
 import Sparkline from '../elements/chart/Sparkline'
+import Image from '../elements/Image'
 
 interface CoinListProps {
     coin: CoinType,
@@ -23,8 +24,8 @@ const CoinList = ({ coin, index }: CoinListProps) => {
             <div className='bg-gradient-to-br from-primary via-cyan-500 to-accent p-[1.5px] rounded shadow transition-all duration-150 hover:-translate-y-2'>
                 <div className='flex items-center justify-between p-4 bg-primary-black-200 rounded h-full'>
                     <div className='flex gap-4'>
-                        <div className="w-16 h-16 bg-red-200 overflow-hidden rounded-full flex-shrink-0">
-                            <img src={iconUrl} alt="" className="object-cover w-full" />
+                        <div className="w-12 h-12 bg-red-200 overflow-hidden rounded-full flex-shrink-0">
+                            <Image className='object-cover w-full' variant={"profile"} src={iconUrl} alt={name} />
                         </div>
                         <div className='flex items-start gap-1 flex-col'>
                             <p className="text-lg font-medium text-primary-white">{name} ({symbol})</p>
