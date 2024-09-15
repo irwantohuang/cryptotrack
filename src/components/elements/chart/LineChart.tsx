@@ -9,13 +9,14 @@ import {
     Filler,
     ChartData,
     ChartOptions,
+    LineController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 import { PriceHistoryType } from '../../../types/PriceHistory';
 import moment from 'moment';
 import { formatPrice, formatTimestamp, removeEmptyLabels } from '../../../utils/utility';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler, LineController);
 
 const createGradient = (ctx: CanvasRenderingContext2D, data: PriceHistoryType[]) => {
     const gradient = ctx.createLinearGradient(0, 0, 0, 450);
@@ -146,7 +147,7 @@ const LineChart = ({ history, timePeriod }: { history: PriceHistoryType[], timeP
         }
         updateChart();
         chart.update();
-    }, [history])
+    }, [history, timePeriod])
 
 
     useEffect(() => {

@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { AppDispatch, RootState } from "../../store/store"
 import { useEffect } from "react";
-import { fetchNewsEverything } from "../../services/news-api";
-import { NEWS_DOMAINS } from "../../constants/constant";
+import { fetchNewsApiCors } from "../../services/news-api";
 import NewsCard from "../../components/news/NewsCard";
 import Button from "../../components/elements/Button";
 import { Link } from "react-router-dom";
@@ -10,19 +9,28 @@ import NewsCardSkeleton from "../../components/skeleton/NewsCardSkeleton";
 import ErrorFetch from "../../components/ErrorFetch";
 
 const News = () => {
-    const { loading, error, newsData } = useSelector((state: RootState) => state.news);
+    const { loading, error, newsCorsData } = useSelector((state: RootState) => state.news);
 
     const dispatch = useDispatch<AppDispatch>();
 
+    // can use just in local cause cors.
+    // useEffect(() => {
+    //     const domains = NEWS_DOMAINS.join(',');
+    //     dispatch(fetchNewsEverything({
+    //         q: "cryptocurrency",
+    //         sortBy: 'publishedAt',
+    //         pageSize: 3,
+    //         page: 1,
+    //         domains: domains
+    //     }))
+    // }, [dispatch])
 
     useEffect(() => {
-        const domains = NEWS_DOMAINS.join(',');
-        dispatch(fetchNewsEverything({
-            q: "cryptocurrency",
-            sortBy: 'publishedAt',
-            pageSize: 3,
+        dispatch(fetchNewsApiCors({
+            query: "Cryptocurrency",
+            language: "en",
             page: 1,
-            domains: domains
+            limit: 3
         }))
     }, [dispatch])
 
@@ -46,8 +54,8 @@ const News = () => {
                     {loading ? Array.from({ length: 3 }).map((_, index) => (
                         <NewsCardSkeleton key={index} />
                     )) :
-                        error ? <ErrorFetch /> :
-                            newsData.articles.map((article, index) => (
+                        error ? <ErrorFetch message={error} /> :
+                            newsCorsData.data.map((article, index) => (
                                 <NewsCard article={article} index={index} key={index} />
                             ))
                     }

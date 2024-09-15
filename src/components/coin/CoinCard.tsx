@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { CoinType } from "../../types/Coins"
 import { formatPrice } from "../../utils/utility"
 import Sparkline from "../elements/chart/Sparkline"
+import Image from "../elements/Image"
 
 interface CoinCardProps {
     coin: CoinType,
@@ -12,12 +13,12 @@ const CoinCard = ({ coin, index }: CoinCardProps) => {
     const { iconUrl, name, symbol, price, change, sparkline } = coin;
     return (
         <Link to={`/cryptocurrencies/${coin.uuid}`} data-aos="fade-up" data-aos-delay={index * 100} className="min-h-full">
-            <div className='relative w-[300px] h-full py-4 px-4 rounded-md hover:scale-105 transition-all duration-150 flex flex-col justify-between items-center
+            <div className='relative w-[300px] h-full py-4 px-4 rounded-md hover:scale-105 transition-all duration-150 flex flex-col justify-between
              [background:linear-gradient(45deg,#241b35,#342a45_50%,#241b35)_padding-box,conic-gradient(from_var(--border-angle),theme(colors.slate.600/.48)_80%,_#6c35de_86%,_#ffc7ff_90%,_#6c35de_94%,_theme(colors.slate.600/.48))_border-box] border border-transparent animate-border
         '>
-                <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 bg-red-200 overflow-hidden rounded-full flex-shrink-0">
-                        <img src={iconUrl} alt="" className="object-cover w-full" />
+                <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 overflow-hidden rounded-full flex-shrink-0">
+                        <Image className='object-cover w-full' variant={"profile"} src={iconUrl} alt={name} />
                     </div>
                     <div className="flex flex-col items-start gap-1">
                         <p className="text-lg font-medium text-primary-white">{name} ({symbol})</p>

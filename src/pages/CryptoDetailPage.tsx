@@ -6,7 +6,6 @@ import LineChart from "../components/elements/chart/LineChart";
 import SelectDropdown from "../components/elements/SelectDropdown";
 import Loading from "../components/elements/Loading";
 import NewsList from "../components/news/NewsList";
-import { NEWS_DOMAINS } from "../constants/constant";
 
 import { timePeriodCategories } from "../data/timePeriodCategory";
 
@@ -16,7 +15,7 @@ import DetailHeader from "../views/crypto-detail/DetailHeader";
 import CoinDetail from "../views/crypto-detail/CoinDetail";
 
 import { fetchCoin, fetchPriceHistory } from "../services/coin-ranking";
-import { fetchNewsEverything } from "../services/news-api";
+import { fetchNewsApiCors } from "../services/news-api";
 import { fetchStatistic } from "../services/coin-ranking/statistic.services";
 
 const CryptoDetailPage = () => {
@@ -25,7 +24,7 @@ const CryptoDetailPage = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { history, loading } = useSelector((state: RootState) => state.priceHistory)
     const { coinDetail } = useSelector((state: RootState) => state.coin);
-    const { newsData } = useSelector((state: RootState) => state.news);
+    const { newsCorsData } = useSelector((state: RootState) => state.news);
     const { statistic } = useSelector((state: RootState) => state.statistic)
 
     const [timePeriod, setTimePeriod] = useState("24h")
@@ -48,16 +47,27 @@ const CryptoDetailPage = () => {
         }
     }, [dispatch, id, timePeriod])
 
+    // useEffect(() => {
+    //     const domains = NEWS_DOMAINS.join(',');
+    //     dispatch(fetchNewsEverything({
+    //         q: coinDetail.name,
+    //         sortBy: 'publishedAt',
+    //         pageSize: 3,
+    //         page: 1,
+    //         domains: domains,
+    //         language: "en"
+    //     }))
+    // }, [dispatch, coinDetail])
+
     useEffect(() => {
-        const domains = NEWS_DOMAINS.join(',');
-        dispatch(fetchNewsEverything({
-            q: coinDetail.name,
-            sortBy: 'publishedAt',
-            pageSize: 3,
-            page: 1,
-            domains: domains,
-            language: "en"
-        }))
+        if (coinDetail.name) {
+            dispatch(fetchNewsApiCors({
+                query: coinDetail.name,
+                language: "en",
+                page: 1,
+                limit: 3
+            }))
+        }
     }, [dispatch, coinDetail])
 
     useEffect(() => {
@@ -90,10 +100,10 @@ const CryptoDetailPage = () => {
 
                     <div className="flex flex-col w-full py-4 mt-8 gap-4">
                         <h5 className="text-2xl font-secondary text-primary-white-200/75 font-medium">{coinDetail.name} Latest News</h5>
-                        {newsData.articles.length < 1 ?
+                        {newsCorsData.data.length < 1 ?
                             <p className="text-primary-white-200/50">No news articles available at the moment.</p>
                             :
-                            newsData.articles.map((article, index) => (
+                            newsCorsData.data.map((article, index) => (
                                 <NewsList article={article} index={index} key={index} />
                             ))
                         }

@@ -8,10 +8,11 @@ import {
     Tooltip,
     Filler,
     ChartData,
+    LineController,
 } from 'chart.js';
 import { Chart } from 'react-chartjs-2';
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler);
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler, LineController);
 
 interface SparklineProps {
     data: number[];
@@ -45,16 +46,22 @@ const Sparkline = ({ data }: SparklineProps) => {
         const chart = chartRef.current;
         if (!chart) return;
 
+        const newData = data.filter(e => !isNaN(e));
+
+        // console.log("new Data -> ", newData)
+
         const updateChart = () => {
             setChartData({
-                labels: Array(data.filter(e => !isNaN(e)).length).fill(''),
+                // labels: Array(data.filter(e => !isNaN(e)).length).fill(''),
+                labels: Array(newData.length).fill(''),
 
                 datasets: [
                     {
                         label: 'Crypto Latest 7 Days',
-                        data: data.filter(e => !isNaN(e)),
-                        borderColor: (data[0] < data[data.length - 1]) ? '#22c55e' : '#ef4444',
-                        backgroundColor: createGradient(chart.ctx, data),
+                        // data: data.filter(e => !isNaN(e)),
+                        data: newData,
+                        borderColor: (newData[0] < newData[newData.length - 1]) ? '#22c55e' : '#ef4444',
+                        backgroundColor: createGradient(chart.ctx, newData),
                         fill: true
                     }
                 ]

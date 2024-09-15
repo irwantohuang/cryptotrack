@@ -15,7 +15,7 @@ const Header = ({ children }: HeaderProps) => {
                         <p className="inline-block first-letter:text-2xl first-letter:font-bold">Track</p>
                     </h1> */}
                     
-                    <Link to="/" className="text-primary-black font-bold text-2xl lowercase transition-all duration-200 hover:text-accent-200">cryptotrack.</Link>
+                    <Link to="/" className="text-primary-black hidden md:inline-block font-bold text-2xl lowercase transition-all duration-200 hover:text-accent-200">cryptotrack.</Link>
 
                     {/* Navbar */}
                     {children}
