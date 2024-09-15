@@ -21,17 +21,17 @@ const TopCoins = () => {
         <section id="topCoins" className='h-full w-full py-20'>
             <div className='container mx-auto h-full px-4 lg:px-0'>
                 
-                <div className='text-center'>
+                <div className='text-center max-w-screen-md'>
                     <span 
                         data-aos="fade-up"
                         data-aos-duration="800"
-                        className='text-5xl font-secondary font-semibold bg-clip-text bg-gradient-to-r from-primary-white via-accent to-primary-300 text-transparent'>Top 10 Cryptocurrencies
+                        className='text-3xl md:text-5xl bg-red-50 font-secondary font-semibold bg-clip-text bg-gradient-to-r from-primary-white via-accent to-primary-300 text-transparent'>Top 10 Cryptocurrencies
                     </span>
                     <p 
                         data-aos="fade-up" 
                         data-aos-offset="5"
                         data-aos-delay="200" 
-                        className='mt-4 text-2xl max-w-4xl mx-auto text-primary-white-200'>
+                        className='mt-4 text-xl sm:text-2xl max-w-4xl mx-auto text-primary-white-200'>
                             Explore the world's leading cryptocurrencies ranked by market cap. Stay informed with up-to-date information on the most valuable digital assets.
                     </p>
                 </div>
