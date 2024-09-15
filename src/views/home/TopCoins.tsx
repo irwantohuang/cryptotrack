@@ -21,7 +21,7 @@ const TopCoins = () => {
         <section id="topCoins" className='h-full w-full py-20'>
             <div className='container mx-auto h-full px-4 lg:px-0'>
                 
-                <div className='text-center max-w-screen-md'>
+                <div className='text-center max-w-screen-md mx-auto'>
                     <span 
                         data-aos="fade-up"
                         data-aos-duration="800"
