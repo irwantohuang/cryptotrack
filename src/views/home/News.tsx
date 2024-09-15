@@ -54,7 +54,7 @@ const News = () => {
                     {loading ? Array.from({ length: 3 }).map((_, index) => (
                         <NewsCardSkeleton key={index} />
                     )) :
-                        error ? <ErrorFetch /> :
+                        error ? <ErrorFetch message={error} /> :
                             newsCorsData.data.map((article, index) => (
                                 <NewsCard article={article} index={index} key={index} />
                             ))

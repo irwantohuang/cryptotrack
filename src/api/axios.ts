@@ -44,12 +44,36 @@ export const newsCorsApi = axios.create({
     }
 })
 
+
 newsCorsApi.interceptors.response.use(
     response => response,
     error => {
         console.log('[News Api - CORS] Axios interceptors error ...' , error)
         if (error) {
-            throw error?.response?.data?.message || error?.message
+            if (error?.response?.status === 429) {
+                throw 429;
+            } else throw error?.response?.data?.message || error?.message
+        }
+    }
+)
+
+export const newsCorsApiV2 = axios.create({
+    baseURL: import.meta.env.VITE_NEWS_CORS_API_URL,
+    headers: {
+        'X-Rapidapi-Key': import.meta.env.VITE_NEWS_CORS_API_KEY2,
+        'X-Rapidapi-Host': import.meta.env.VITE_NEWS_CORS_HOST
+    }
+})
+
+
+newsCorsApiV2.interceptors.response.use(
+    response => response,
+    error => {
+        console.log('[News Api - CORS] Axios interceptors error ...' , error)
+        if (error) {
+            if (error?.response?.status === 429) {
+                throw "Sorry, we've reached our daily API limit. please check back tommorow"
+            } else throw error?.response?.data?.message || error?.message
         }
     }
 )

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { newsApi, newsCorsApi } from "../../api/axios";
+import { newsApi, newsCorsApi, newsCorsApiV2 } from "../../api/axios";
 
 interface FetchNewsRequest {
     q: string,
@@ -48,7 +48,6 @@ interface NewsCorsRequest {
 
 export const fetchNewsApiCors = createAsyncThunk("newsCors/articles", async(request: NewsCorsRequest, {rejectWithValue}) => {
     try {
-        console.log("[Fetch News Api - Cors] Request -> ", request)
         const response = await newsCorsApi.get("v2/search/articles", {
             params: request
         })
@@ -56,7 +55,19 @@ export const fetchNewsApiCors = createAsyncThunk("newsCors/articles", async(requ
         
         return response.data;
     } catch (error) {
-        console.log("[Fetch News Api - Cors] Error -> ", error)
-        return rejectWithValue(error);
+        console.log("[Fetch News Api V1 - Cors] Error -> ", error)
+        if (error === 429) {
+            try {
+                const response = await newsCorsApiV2.get("v2/search/articles", {
+                    params: request
+                })
+                return response.data;
+            } catch (error) {
+                console.log("[Fetch News Api V2 - Cors] Error -> ", error)
+                return rejectWithValue(error)
+            }
+        } else {
+            return rejectWithValue(error)
+        }
     }
 })
