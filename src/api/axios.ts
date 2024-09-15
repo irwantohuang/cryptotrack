@@ -11,16 +11,15 @@ export const coinRankingApi = axios.create({
 coinRankingApi.interceptors.response.use(
     response => response,
     error => {
-        console.log('Axios interceptors error ...' , error)
+        console.log('[Coin Ranking] Axios interceptors error ...' , error)
         if (error) {
             throw error?.response?.data?.message || error?.message
         }
     }
 )
 
-const proxyUrl = 'https://cors-anywhere.herokuapp.com/'
 export const newsApi = axios.create({
-    baseURL: proxyUrl + import.meta.env.VITE_NEWS_BASE_URL,
+    baseURL: import.meta.env.VITE_NEWS_BASE_URL,
     headers: {
         'Authorization': import.meta.env.VITE_NEWS_API_KEY,
         'X-Api-Key': import.meta.env.VITE_NEWS_API_KEY,
@@ -33,6 +32,24 @@ newsApi.interceptors.response.use(
         console.log('Axios interceptors error ...' , error)
         if (error) {
             throw error?.response?.data?.message
+        }
+    }
+)
+
+export const newsCorsApi = axios.create({
+    baseURL: import.meta.env.VITE_NEWS_CORS_API_URL,
+    headers: {
+        'X-Rapidapi-Key': import.meta.env.VITE_NEWS_CORS_API_KEY,
+        'X-Rapidapi-Host': import.meta.env.VITE_NEWS_CORS_HOST
+    }
+})
+
+newsCorsApi.interceptors.response.use(
+    response => response,
+    error => {
+        console.log('[News Api - CORS] Axios interceptors error ...' , error)
+        if (error) {
+            throw error?.response?.data?.message || error?.message
         }
     }
 )

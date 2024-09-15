@@ -29,3 +29,47 @@ export const initNewsArticle = (): NewsArticleType[] => {
         }
     ]
 }
+
+
+
+// News API - Support Cors
+
+export interface NewsArticleTypeV2 {
+    title: string,
+    url: string,
+    excerpt: string,
+    thumbnail: string,
+    language: string,
+    paywall: string,
+    contentLength: number,
+    date: string,
+    authors: string[],
+    keywords: string[],
+    publisher: {
+        name: string,
+        url: string,
+        favicon: string
+    }
+}
+
+export const initNewsArticleV2 = (): NewsArticleTypeV2[] => {
+    return [
+        {
+            title: '',
+            url: '',
+            excerpt: '',
+            thumbnail: '',
+            language: '',
+            paywall: '',
+            contentLength: 0,
+            date: '',
+            authors: [],
+            keywords: [],
+            publisher: {
+                name: '',
+                url: '',
+                favicon: ''
+            }
+        }
+    ]
+}
