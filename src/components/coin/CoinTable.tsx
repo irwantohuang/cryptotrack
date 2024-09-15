@@ -92,7 +92,7 @@ const TableBody = ({ coins, headers }: TableBodyProps) => {
                     <tr key={index} className='hover:bg-primary-black-200 group'>
                         {headers.map((header, colIndex) => (
                             <td key={colIndex} className={`py-2 border-b border-b-primary-white/15 whitespace-nowrap 
-                                ${header.id === 'name' ? 'sticky px-4 whitespace-nowrap left-0 bg-primary-black group-hover:bg-primary-black-200' : 'px-6'}
+                                ${header.id === 'name' ? 'sticky px-4 whitespace-nowrap left-0 bg-primary-black-300 group-hover:bg-primary-black-200' : 'px-6'}
                                 ${header.id === 'change' ? (Number(row.change) < 0 ? 'text-red-500' : 'text-green-500') : ''}`}
                                 style={{ textAlign: header.align }}
                             >
@@ -139,7 +139,7 @@ const DataSparkline = ({ sparkline }: { sparkline: string[] }) => {
 
 const DataName = ({ iconUrl, name, symbol }: CoinType) => {
     return (
-        <div className="flex items-center justify-start gap-2 overflow-hidden">
+        <div className="flex items-center justify-start gap-2 w-full px-2 bg-red-200">
             <Image className='w-6 h-6' variant={"profile"} src={iconUrl} alt={name} />
             {/* <span className="me-4 text-primary-white text-ellipsis group-hover:text-accent font-medium font-secondary">{name}
                 <span className="text-primary-white-200 text-ellipsis group-hover:text-primary-white"> ({symbol})</span>
