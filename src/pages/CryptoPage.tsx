@@ -182,7 +182,7 @@ const CryptoPage = () => {
                     {coinState.loading && <div className="absolute w-full h-full flex items-center justify-center inset-0 bg-primary-black/50 z-[101]">
                         <Loading />
                     </div>}
-                    <div ref={tableContainerRef} className={`relative bg-primary-black min-h-[515px] max-h-[515px] w-full lg:px-0 px-0 mt-8 my-4 z-10 ${coinState.loading ? 'overflow-hidden' : 'overflow-auto'}`}>
+                    <div ref={tableContainerRef} className={`relative scrollbar-hidden bg-primary-black min-h-[515px] max-h-[515px] w-full lg:px-0 px-0 mt-8 my-4 z-10 ${coinState.loading ? 'overflow-hidden' : 'overflow-auto'}`}>
                         <CoinTable aos="fade-up">
                             <CoinTable.TableHead headers={cryptoCoinHeader} onClick={handleSort}
                                 sortOrder={sortOrder} sortColumn={sortColumn}
