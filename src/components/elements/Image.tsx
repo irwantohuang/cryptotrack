@@ -19,7 +19,10 @@ const Image = ({ variant, className, src, ...props }: ImageProps ) => {
     const [imageSrc, setImageSrc] = useState(src);
 
     useEffect(() => {
-        setImageSrc(src)
+        console.log("src -> ", src)
+        if (src) {
+            setImageSrc(src)
+        }
     }, [src])
 
     return <img 
