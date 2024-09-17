@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { ComponentProps, useState } from "react";
+import { ComponentProps, useEffect, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import PlaceholderImage from './../../../public/assets/placeholder.webp'
 
@@ -17,6 +17,13 @@ type ImageProps = VariantProps<typeof ImageVariants> & ComponentProps<"img">;
 
 const Image = ({ variant, className, src, ...props }: ImageProps ) => {
     const [imageSrc, setImageSrc] = useState(src);
+
+    useEffect(() => {
+        console.log("src -> ", src)
+        if (src) {
+            setImageSrc(src)
+        }
+    }, [src])
 
     return <img 
         src={imageSrc}

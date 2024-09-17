@@ -17,6 +17,7 @@ import CoinDetail from "../views/crypto-detail/CoinDetail";
 import { fetchCoin, fetchPriceHistory } from "../services/coin-ranking";
 import { fetchNewsApiCors } from "../services/news-api";
 import { fetchStatistic } from "../services/coin-ranking/statistic.services";
+import ErrorFetch from "../components/ErrorFetch";
 
 const CryptoDetailPage = () => {
     const { id } = useParams<{ id: string }>();
@@ -24,7 +25,7 @@ const CryptoDetailPage = () => {
     const dispatch = useDispatch<AppDispatch>();
     const { history, loading } = useSelector((state: RootState) => state.priceHistory)
     const { coinDetail } = useSelector((state: RootState) => state.coin);
-    const { newsCorsData } = useSelector((state: RootState) => state.news);
+    const { newsCorsData, error } = useSelector((state: RootState) => state.news);
     const { statistic } = useSelector((state: RootState) => state.statistic)
 
     const [timePeriod, setTimePeriod] = useState("24h")
@@ -102,7 +103,8 @@ const CryptoDetailPage = () => {
                         <h5 className="text-2xl font-secondary text-primary-white-200/75 font-medium">{coinDetail.name} Latest News</h5>
                         {newsCorsData.data.length < 1 ?
                             <p className="text-primary-white-200/50">No news articles available at the moment.</p>
-                            :
+                            : 
+                                error ? <ErrorFetch message={error} /> : 
                             newsCorsData.data.map((article, index) => (
                                 <NewsList article={article} index={index} key={index} />
                             ))

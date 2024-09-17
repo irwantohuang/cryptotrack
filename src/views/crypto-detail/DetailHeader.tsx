@@ -19,7 +19,6 @@ const DetailHeader = () => {
     useEffect(() => {
         if (searchTerm === '') {
             setCoinSuggestions(searchSuggestions)
-            console.log("here ok")
         } else if (searchTerm.length > 1) {
             const filteredSuggestions = searchSuggestions.filter((e) => {
                 const name = e.name.toLocaleLowerCase();
