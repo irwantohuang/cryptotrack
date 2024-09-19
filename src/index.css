@@ -33,18 +33,20 @@
     @apply bg-primary-black-300;
 }
 
-
-/* .scrollbar-hidden {
-    overflow: hidden;
-} */
-
 .scrollbar-hidden::-webkit-scrollbar-thumb {
     @apply bg-transparent;
 }
 
 .scroll-hidden::-webkit-scrollbar {
     @apply hidden
-    /* Hides the scrollbar */
+}
+
+*::-webkit-scrollbar {
+    @apply bg-slate-800 w-2
+}
+
+*::-webkit-scrollbar-thumb {
+    @apply bg-primary-black-200 rounded-full
 }
 
 input[type="search"]::-webkit-search-cancel-button {
