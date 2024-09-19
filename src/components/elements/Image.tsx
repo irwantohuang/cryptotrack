@@ -7,7 +7,7 @@ import PlaceholderImage from './../../../public/assets/placeholder.webp'
 const ImageVariants = cva('transition-all duration-200 object-cover', {
     variants: {
         variant: {
-            profile: "rounded-full",
+            profile: "rounded-full w-full h-full",
             thumbnail: "block w-full",
         },
     }
