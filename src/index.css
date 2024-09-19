@@ -34,18 +34,19 @@
 }
 
 
-/* .scrollbar-hidden {
-    overflow: hidden;
-} */
-
-.scrollbar-hidden::-webkit-scrollbar-thumb {
-    @apply bg-transparent;
+/* Scrollbar new hidden */
+*::-webkit-scrollbar {
+    @apply bg-slate-800 w-2
 }
 
-.scroll-hidden::-webkit-scrollbar {
-    @apply hidden
-    /* Hides the scrollbar */
+*::-webkit-scrollbar-thumb {
+    @apply bg-primary-black-200 rounded-full
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+    @apply bg-transparent w-0
+}
+
 
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;

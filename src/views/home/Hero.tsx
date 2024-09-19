@@ -3,7 +3,7 @@ import HeroChain from '/assets/hero-side-bg.png';
 
 const Hero = () => {
     return (
-        <section className="hero-section flex w-full  justify-center h-screen bg-hero-bg-gradient bg-cover bg-center bg-no-repeat">
+        <section className="hero-section flex w-full justify-center h-screen bg-hero-bg-gradient bg-cover bg-center bg-no-repeat">
             <div className="container mx-auto h-full lg:pt-[100px]">
                 <div className="flex flex-col items-start justify-center md:pt-32 lg:pt-0 h-full lg:flex-row lg:items-center lg:justify-between">
                     <div className="max-w-4xl mx-auto text-center lg:text-start">
