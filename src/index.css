@@ -33,14 +33,8 @@
     @apply bg-primary-black-300;
 }
 
-.scrollbar-hidden::-webkit-scrollbar-thumb {
-    @apply bg-transparent;
-}
 
-.scroll-hidden::-webkit-scrollbar {
-    @apply hidden
-}
-
+/* Scrollbar new hidden */
 *::-webkit-scrollbar {
     @apply bg-slate-800 w-2
 }
@@ -48,6 +42,11 @@
 *::-webkit-scrollbar-thumb {
     @apply bg-primary-black-200 rounded-full
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+    @apply bg-transparent w-0
+}
+
 
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
