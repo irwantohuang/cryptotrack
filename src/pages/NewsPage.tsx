@@ -44,12 +44,21 @@ const NewsPage = () => {
         //     page: Math.floor(newsData.articles.length / 12) + 1
         // }))
 
-        dispatch(fetchNewsApiCors({
-            query: "Cryptocurrency",
-            language: "en",
-            page: Math.floor(newsCorsData.data.length / 10) + 1,
-            limit: 10
-        }))
+        if (searchTerm.length >= 3) {
+            dispatch(fetchNewsApiCors({
+                query: searchTerm,
+                language: "en",
+                page: Math.floor(newsCorsData.data.length / 10) + 1,
+                limit: 10
+            }))
+        } else {
+            dispatch(fetchNewsApiCors({
+                query: "Cryptocurrency",
+                language: "en",
+                page: Math.floor(newsCorsData.data.length / 10) + 1,
+                limit: 10
+            }))
+        }
     }
 
     useEffect(() => {
