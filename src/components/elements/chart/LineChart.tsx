@@ -20,7 +20,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip,
 
 const createGradient = (ctx: CanvasRenderingContext2D, data: PriceHistoryType[]) => {
     const gradient = ctx.createLinearGradient(0, 0, 0, 450);
-    const isIncreasing = data[0].price < data[data.length - 1].price;
+    const isIncreasing = Number(data[0].price) < Number(data[data.length - 1].price);
 
     gradient.addColorStop(0, isIncreasing ? 'rgba(34, 197, 94, 0.5)' : 'rgba(239, 68, 68, 0.5)');
     gradient.addColorStop(1, isIncreasing ? 'rgba(34, 197, 94, 0.05)' : 'rgba(239, 68, 68, 0.05)');
@@ -49,7 +49,8 @@ const LineChart = ({ history, timePeriod }: { history: PriceHistoryType[], timeP
         if (!chart) return;
 
         const updateChart = () => {
-            const borderColor = (Number(history[0].price) < Number(history[history.length - 1].price)) ? '#22c55e' : '#ef4444';
+            const notNullData = history.filter(e => !isNaN(Number(e.price)));
+            const borderColor = Number(notNullData[0].price) < Number(notNullData[notNullData.length - 1].price) ? '#22c55e' : '#ef4444';
             const labels = history.map(item => formatTimestamp(item.timestamp, timePeriod))
             const uniqueLabels = removeEmptyLabels(labels);
             setChartData({
@@ -58,7 +59,7 @@ const LineChart = ({ history, timePeriod }: { history: PriceHistoryType[], timeP
                     label: "Price in USD",
                     data: history.map(h => parseFloat(h.price)),
                     borderColor: borderColor,
-                    backgroundColor: createGradient(chart.ctx, history),
+                    backgroundColor: createGradient(chart.ctx, notNullData),
                     fill: true
                 }]
             })
